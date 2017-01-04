@@ -1,0 +1,2 @@
+class SpecialProduct < ApplicationRecord
+end
