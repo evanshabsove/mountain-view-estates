@@ -6,8 +6,10 @@
   <ul>
     <li>
       <%= inv_product.description %>
-      <%= bootstrap_form_for(@order) do |f| %>
-        <%= f.number_field :quantity %>
+      <%= bootstrap_form_for(@order_item) do |f| %>
+        <%= f.number_field :quantity, value: 1, min: 1 %>
+        <%= f.hidden_field :inventory_product_id, value: inv_product.id %>
+        <%= f.submit "Add to Cart", class: "btn btn-primary" %>
 
       <% end %>
     </li>
