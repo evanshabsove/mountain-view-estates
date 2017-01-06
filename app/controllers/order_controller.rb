@@ -1,5 +1,5 @@
 class OrderController < ApplicationController
   def index
-    #code
+    @inv_products = InventoryProduct.all
   end
 end
