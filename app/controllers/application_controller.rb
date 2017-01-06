@@ -16,4 +16,12 @@ class ApplicationController < ActionController::Base
     return unless !current_user.admin?
     redirect_to root_path, alert: 'Admins only!'
   end
+
+  def current_order
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
+  end
 end
