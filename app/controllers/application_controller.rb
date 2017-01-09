@@ -24,9 +24,7 @@ class ApplicationController < ActionController::Base
     if !session[:order_id].nil?
       Order.find(session[:order_id])
     else
-       order = Order.new
-       order.user_id = current_user.id
-       return order
+      Order.new
     end
   end
 
