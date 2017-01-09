@@ -28,8 +28,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private
-  # def order_params
-  #   params.require(:order).permit(:user_id)
-  # end
 end

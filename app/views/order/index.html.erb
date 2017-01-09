@@ -1,5 +1,6 @@
 <h1>Order Index</h1>
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<%= link_to('shopping cart', cart_path) %>
 <h1>list of all products</h1>
 <% @inv_products.each do |inv_product| %>
   <ul>
