@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_order
+  before_action :authenticate_user!
 
   def after_sign_in_path_for(resource_or_scope)
     if current_user.admin
@@ -23,7 +24,14 @@ class ApplicationController < ActionController::Base
     if !session[:order_id].nil?
       Order.find(session[:order_id])
     else
-      Order.new
+       order = Order.new
+       order.user_id = current_user.id
+       return order
     end
   end
+
+  private
+  # def order_params
+  #   params.require(:order).permit(:user_id)
+  # end
 end
