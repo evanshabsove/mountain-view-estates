@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  helper_method :current_order
+
   def after_sign_in_path_for(resource_or_scope)
     if current_user.admin
       return admin_index_url
@@ -15,5 +17,13 @@ class ApplicationController < ActionController::Base
   def authorize_admin
     return unless !current_user.admin?
     redirect_to root_path, alert: 'Admins only!'
+  end
+
+  def current_order
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
   end
 end
