@@ -3,7 +3,7 @@ class OrderItemsController < ApplicationController
     @order = current_order
     @order.user = current_user
     @order_item = @order.order_items.new(order_item_params)
-    @order.save!
+    @order.save
     session[:order_id] = @order.id
 
   end
@@ -24,6 +24,6 @@ class OrderItemsController < ApplicationController
 
   private
   def order_item_params
-    params.require(:order_item).permit(:quantity, :inventory_product_id, :special_product_id)
+     params.require(:order_item).permit(:quantity, :inventory_product_id, :special_product_id)
   end
 end
