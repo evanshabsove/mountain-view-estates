@@ -13,7 +13,10 @@
   </p>
 <% else %>
   <% @order_items.each do |order_item| %>
-    <h1><%= order_item.inventory_product.description %></h1>
-    <p><%= order_item.quantity %></p>
+    <h3><%= order_item.inventory_product.description %>: <%= order_item.quantity %></h3>
+  <% end %>
+  <%= form_for @order, url: order_url {action:"update"} do |f| %>
+    <h3>Everything look good?</h3>
+    <%= f.button :submit, :class => "btn btn-primary" %>
   <% end %>
 <% end %>
