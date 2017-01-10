@@ -1,5 +1,13 @@
 <h1>Order Index</h1>
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<h1>Search</h1>
+<%= form_tag order_index_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :description => nil %>
+  </p>
+<% end %>
+
 <h1>list of all products</h1>
 <% @inv_products.each do |inv_product| %>
   <table>
