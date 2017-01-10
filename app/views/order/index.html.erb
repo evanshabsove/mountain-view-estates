@@ -1,7 +1,7 @@
 <h1>Order Index</h1>
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 <h1>Search</h1>
-<%= form_tag order_index_path, :method => 'get' do %>
+<%= form_tag order_index_path, :method => 'get', :id => "products_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :description => nil %>
@@ -9,16 +9,6 @@
 <% end %>
 
 <h1>list of all products</h1>
-<% @inv_products.each do |inv_product| %>
-  <table>
-    <tr>
-      <th><%= inv_product.description %></th>
-      <%= bootstrap_form_for(@order_item) do |f| %>
-        <th><%= f.number_field :quantity, value: 1, min: 1 %></th>
-        <%= f.hidden_field :inventory_product_id, value: inv_product.id %>
-        <th><%= f.submit "Add to Cart", class: "btn btn-primary" %></th>
-      <% end %>
-    </tr>
-  </table>
-<% end %>
-<%= will_paginate @inv_products %>
+<div id="products">
+  <%= render 'products' %>
+</div>
