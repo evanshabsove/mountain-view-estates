@@ -7,36 +7,36 @@
   </p>
   <p>
     Product Catagory:
-    <%= radio_button_tag :product_code, 'C', params[:product_code] == 'C' ? true : false %>
+    <%= check_box_tag :product_code, 'C', params[:product_code] == 'C' ? true : false, class: "other-button checkbox" %>
     <%= label_tag(:product_code, "Cleaning Supplies") %>
-    <%= radio_button_tag :product_code, 'D', params[:product_code] == 'C' ? true : false %>
+    <%= check_box_tag :product_code, 'D', params[:product_code] == 'C' ? true : false, class: "other-button checkbox" %>
     <%= label_tag(:product_code, "Dairy") %>
-    <%= radio_button_tag :product_code, 'F', params[:product_code] == 'F' ? true : false %>
+    <%= check_box_tag :product_code, 'F', params[:product_code] == 'F' ? true : false, class: "other-button checkbox" %>
     <%= label_tag(:product_code, "Flavoured Syrup") %>
-    <%= radio_button_tag :product_code, 'FT', params[:product_code] == 'FT' ? true : false %>
+    <%= check_box_tag :product_code, 'FT', params[:product_code] == 'FT' ? true : false, class: "coffee-button checkbox" %>
     <%= label_tag(:product_code, "Fair Trade Coffee") %>
-    <%= radio_button_tag :product_code, 'H', params[:product_code] == 'H' ? true : false %>
-    <%= label_tag(:product_code, "Chocolate") %>
-    <%= radio_button_tag :product_code, 'P', params[:product_code] == 'P' ? true : false %>
-    <%= label_tag(:product_code, "Papper Products") %>
-    <%= radio_button_tag :product_code, 'R', params[:product_code] == 'R' ? true : false %>
+    <%= check_box_tag :product_code, 'R', params[:product_code] == 'R' ? true : false, class: "coffee-button checkbox" %>
     <%= label_tag(:product_code, "Flavoured Coffee/Non Fair-Trade") %>
-    <%= radio_button_tag :product_code, 'S', params[:product_code] == 'S' ? true : false %>
+    <%= check_box_tag :product_code, 'H', params[:product_code] == 'H' ? true : false, class: "other-button checkbox" %>
+    <%= label_tag(:product_code, "Chocolate") %>
+    <%= check_box_tag :product_code, 'P', params[:product_code] == 'P' ? true : false, class: "other-button checkbox" %>
+    <%= label_tag(:product_code, "Papper Products") %>
+    <%= check_box_tag :product_code, 'S', params[:product_code] == 'S' ? true : false, class: "other-button checkbox" %>
     <%= label_tag(:product_code, "Sundries") %>
-    <%= radio_button_tag :product_code, 'SU', params[:product_code] == 'SU' ? true : false %>
+    <%= check_box_tag :product_code, 'SU', params[:product_code] == 'SU' ? true : false, class: "other-button checkbox" %>
     <%= label_tag(:product_code, "Sugar") %>
-    <%= radio_button_tag :product_code, 'T', params[:product_code] == 'T' ? true : false %>
+    <%= check_box_tag :product_code, 'T', params[:product_code] == 'T' ? true : false, class: "other-button checkbox" %>
     <%= label_tag(:product_code, "Tea") %>
   </p>
-  <p>
+  <p id="coffee-hidden">
     More defined search:
-    <%= radio_button_tag :def_search, '2oz', params[:def_search] == '2oz' ? true : false %>
+    <%= check_box_tag :def_search, '2oz', params[:def_search] == '2oz' ? true : false, class: "hidden-button" %>
     <%= label_tag(:def_search, "2oz coffee") %>
-    <%= radio_button_tag :def_search, '2.25oz', params[:def_search] == '2.25oz' ? true : false %>
+    <%= check_box_tag :def_search, '2.25oz', params[:def_search] == '2.25oz' ? true : false, class: "hidden-button" %>
     <%= label_tag(:def_search, "2.25oz coffee") %>
-    <%= radio_button_tag :def_search, '2.5oz', params[:def_search] == '2.5oz' ? true : false %>
+    <%= check_box_tag :def_search, '2.5oz', params[:def_search] == '2.5oz' ? true : false, class: "hidden-button" %>
     <%= label_tag(:def_search, "2.5oz coffee") %>
-    <%= radio_button_tag :def_search, '5lbs', params[:def_search] == '5lbs' ? true : false %>
+    <%= check_box_tag :def_search, '5lbs', params[:def_search] == '5lbs' ? true : false, class: "hidden-button" %>
     <%= label_tag(:def_search, "5lbs coffee") %>
   </p>
   <p>
