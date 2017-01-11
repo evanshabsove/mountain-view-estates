@@ -24,12 +24,18 @@ class ApplicationController < ActionController::Base
     if !session[:order_id].nil?
       order = Order.find(session[:order_id])
       if order.order_status_id == 4
-        Order.new
+        @order = Order.new
+        @order.user = current_user
+        @order.save
+        return @order
       else
         return order
       end
     else
-      Order.new
+      @order = Order.new
+      @order.user = current_user
+      @order.save
+      return @order
     end
   end
 
