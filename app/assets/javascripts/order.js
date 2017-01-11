@@ -18,18 +18,18 @@ $(function() {
   });
 
   $(".checkbox").change(function() {
-      var checked = $(this).is(':checked');
-      $(".checkbox").prop('checked',false);
-      if(checked) {
-          $(this).prop('checked',true);
-      }
+    var checked = $(this).is(':checked');
+    $(".checkbox").prop('checked',false);
+    if(checked) {
+      $(this).prop('checked',true);
+    }
   });
 
   $(".hidden-button").change(function() {
-      var checked = $(this).is(':checked');
-      $(".hidden-button").prop('checked',false);
-      if(checked) {
-          $(this).prop('checked',true);
-      }
+    var checked = $(this).is(':checked');
+    $(".hidden-button").prop('checked',false);
+    if(checked) {
+      $(this).prop('checked',true);
+    }
   });
 });
