@@ -4,6 +4,13 @@
 <%= form_tag order_index_path, :method => 'get', :id => "products_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
+  </p>
+  <p>
+    Product Catagory:
+    <%= radio_button_tag :inventory_code, 'C', params[:inventory_code] == 'C' ? true : false %>
+    <%= label_tag(:inventory_code, "Cleaning Supplies") %>
+  </p>
+  <p>
     <%= submit_tag "Search", :description => nil %>
   </p>
 <% end %>
