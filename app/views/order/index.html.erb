@@ -7,8 +7,8 @@
   </p>
   <p>
     Product Catagory:
-    <%= radio_button_tag :inventory_code, 'C', params[:inventory_code] == 'C' ? true : false %>
-    <%= label_tag(:inventory_code, "Cleaning Supplies") %>
+    <%= radio_button_tag :product_code, 'C', params[:product_code] == 'C' ? true : false %>
+    <%= label_tag(:product_code, "Cleaning Supplies") %>
   </p>
   <p>
     <%= submit_tag "Search", :description => nil %>
