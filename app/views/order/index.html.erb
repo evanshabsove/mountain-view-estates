@@ -29,6 +29,17 @@
     <%= label_tag(:product_code, "Tea") %>
   </p>
   <p>
+    More defined search:
+    <%= radio_button_tag :def_search, '2oz', params[:def_search] == '2oz' ? true : false %>
+    <%= label_tag(:def_search, "2oz coffee") %>
+    <%= radio_button_tag :def_search, '2.25oz', params[:def_search] == '2.25oz' ? true : false %>
+    <%= label_tag(:def_search, "2.25oz coffee") %>
+    <%= radio_button_tag :def_search, '2.5oz', params[:def_search] == '2.5oz' ? true : false %>
+    <%= label_tag(:def_search, "2.5oz coffee") %>
+    <%= radio_button_tag :def_search, '5lbs', params[:def_search] == '5lbs' ? true : false %>
+    <%= label_tag(:def_search, "5lbs coffee") %>
+  </p>
+  <p>
     <%= submit_tag "Search", :description => nil %>
   </p>
 <% end %>
