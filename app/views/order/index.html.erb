@@ -9,6 +9,24 @@
     Product Catagory:
     <%= radio_button_tag :product_code, 'C', params[:product_code] == 'C' ? true : false %>
     <%= label_tag(:product_code, "Cleaning Supplies") %>
+    <%= radio_button_tag :product_code, 'D', params[:product_code] == 'C' ? true : false %>
+    <%= label_tag(:product_code, "Dairy") %>
+    <%= radio_button_tag :product_code, 'F', params[:product_code] == 'F' ? true : false %>
+    <%= label_tag(:product_code, "Flavoured Syrup") %>
+    <%= radio_button_tag :product_code, 'FT', params[:product_code] == 'FT' ? true : false %>
+    <%= label_tag(:product_code, "Fair Trade Coffee") %>
+    <%= radio_button_tag :product_code, 'H', params[:product_code] == 'H' ? true : false %>
+    <%= label_tag(:product_code, "Chocolate") %>
+    <%= radio_button_tag :product_code, 'P', params[:product_code] == 'P' ? true : false %>
+    <%= label_tag(:product_code, "Papper Products") %>
+    <%= radio_button_tag :product_code, 'R', params[:product_code] == 'R' ? true : false %>
+    <%= label_tag(:product_code, "Flavoured Coffee/Non Fair-Trade") %>
+    <%= radio_button_tag :product_code, 'S', params[:product_code] == 'S' ? true : false %>
+    <%= label_tag(:product_code, "Sundries") %>
+    <%= radio_button_tag :product_code, 'SU', params[:product_code] == 'SU' ? true : false %>
+    <%= label_tag(:product_code, "Sugar") %>
+    <%= radio_button_tag :product_code, 'T', params[:product_code] == 'T' ? true : false %>
+    <%= label_tag(:product_code, "Tea") %>
   </p>
   <p>
     <%= submit_tag "Search", :description => nil %>
