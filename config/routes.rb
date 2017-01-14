@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get '/admin', to: 'admin#index', as: 'admin_index'
 
+  post 'create_user' => 'admin#create', as: :create_user  
+
   devise_scope :user do
     root :to => 'devise/sessions#new'
   end

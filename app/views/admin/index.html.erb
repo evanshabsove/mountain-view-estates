@@ -1,2 +1,7 @@
 <h1>Admin Index</h1>
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<%= bootstrap_form_for @user, url: create_user_path do |f| %>
+  <%= f.text_field :email, placeholder: "Enter Clients email" %>
+  <%= f.text_field :password, placeholder: "Enter temporary password" %>
+  <%= f.button :submit %>
+<% end %>
