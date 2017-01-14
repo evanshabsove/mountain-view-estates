@@ -2,12 +2,12 @@
 
 <%= @user.email %>
 
-<%= bootstrap_form_for @user, url: product_user_path do |f| %>
+<%= bootstrap_form_for @special_products, url: product_user_path do |f| %>
   <% @special_products.each do |special_product| %>
   <table>
     <tr>
       <th><%= special_product.description %></th>
-      <th><%= f.check_box :special_product_ids, value: special_product.id %></th>
+      <th><%= f.check_box :special_products, value: special_product.id %></th>
     </tr>
   </table>
   <% end %>
