@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   post 'create_user' => 'admin#create', as: :create_user
 
+  patch 'create_product_user' => 'admin#product_user', as: :product_user
+
   devise_scope :user do
     root :to => 'devise/sessions#new'
   end
