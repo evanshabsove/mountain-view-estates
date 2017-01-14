@@ -17,6 +17,7 @@ class AdminController < ApplicationController
 
   def new
     @user = User.last
+    @special_products = SpecialProduct.all
   end
 
   private
