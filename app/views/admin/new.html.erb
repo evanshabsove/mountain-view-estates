@@ -1,16 +1,17 @@
 <h1>I'm the new admin page</h1>
 
 <%= @user.email %>
-
-<%= bootstrap_form_for @special_products, url: product_user_path do |f| %>
+<%= bootstrap_form_for @user_product, url: product_user_path do |f| %>
   <% @special_products.each do |special_product| %>
   <table>
     <tr>
       <th><%= special_product.description %></th>
-      <th><%= f.check_box :special_products, value: special_product.id %></th>
+      <th><%= f.check_box :special_product_id %></th>
+      <%= f.hidden_field :user_id, value: @user.id %>
     </tr>
   </table>
   <% end %>
-<%= will_paginate @special_products %>
-<%= f.submit "Add special products to users", class: "btn btn-primary" %>
+  <%= f.submit "Add special products to users", class: "btn btn-primary" %>
 <% end %>
+
+<%= will_paginate @special_products %>
