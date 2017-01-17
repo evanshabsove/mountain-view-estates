@@ -18,18 +18,18 @@ class AdminController < ApplicationController
   def new
     @user = User.last
     @user_product = UserProduct.new
-    @special_products = SpecialProduct.paginate(:page => params[:page], :per_page => 10)
+    @special_products = SpecialProduct.all
   end
 
   def product_user
     @user = User.last
-    @user_product = UserProduct.new(special_product_params)
-    raise 'hit'
-    if @user_product.save
-      redirect_to admin_index_url
-    else
-      render :new
+    special_product_params["special_product_id"].each do |special_product|
+      @user_product = UserProduct.new
+      @user_product.user_id = @user.id
+      @user_product.special_product_id = special_product.to_i
+      @user_product.save
     end
+    redirect_to admin_new_url
   end
 
   private
@@ -38,7 +38,7 @@ class AdminController < ApplicationController
   end
 
   def special_product_params
-    params.require(:user_product).permit(:special_product_id, :user_id)
+    params.require(:user_product).permit(:user_id, special_product_id:[])
   end
 
   def authorize_admin

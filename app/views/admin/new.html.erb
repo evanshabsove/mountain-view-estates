@@ -6,12 +6,10 @@
   <table>
     <tr>
       <th><%= special_product.description %></th>
-      <th><%= f.check_box :special_product_id %></th>
+      <th><%= f.check_box :special_product_id, {:multiple => true}, checked_value = "#{special_product.id}", unchecked_value = nil%></th>
       <%= f.hidden_field :user_id, value: @user.id %>
     </tr>
   </table>
   <% end %>
   <%= f.submit "Add special products to users", class: "btn btn-primary" %>
 <% end %>
-
-<%= will_paginate @special_products %>
