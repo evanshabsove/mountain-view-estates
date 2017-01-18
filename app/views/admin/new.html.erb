@@ -1,13 +1,23 @@
 <h1>I'm the new admin page</h1>
 
-<%= @user.email %>
+<h3>Select a user</h3>
+
 <%= bootstrap_form_for @user_product, url: product_user_path do |f| %>
+  <% @users.each do |user| %>
+  <table>
+    <tr>
+      <th>
+        <%= user.email %>
+      </th>
+      <th><%= f.radio_button :user_id, user.id %></th>
+    </tr>
+  </table>
+  <% end %>
   <% @special_products.each do |special_product| %>
   <table>
     <tr>
       <th><%= special_product.description %></th>
       <th><%= f.check_box :special_product_id, {:multiple => true}, checked_value = "#{special_product.id}", unchecked_value = nil%></th>
-      <%= f.hidden_field :user_id, value: @user.id %>
     </tr>
   </table>
   <% end %>

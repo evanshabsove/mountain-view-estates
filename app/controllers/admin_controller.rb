@@ -16,7 +16,7 @@ class AdminController < ApplicationController
   end
 
   def new
-    @user = User.last
+    @users = User.all
     @user_product = UserProduct.new
     @special_products = SpecialProduct.all
   end
@@ -25,7 +25,7 @@ class AdminController < ApplicationController
     @user = User.last
     special_product_params["special_product_id"].each do |special_product|
       @user_product = UserProduct.new
-      @user_product.user_id = @user.id
+      @user_product.user_id = special_product_params["user_id"].to_i
       @user_product.special_product_id = special_product.to_i
       @user_product.save
     end
