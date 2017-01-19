@@ -18,8 +18,17 @@ class OrderItemsController < ApplicationController
   def update
     @order = current_order
     @order_item = @order.order_items.find(params[:id])
-    @order_item.update_attributes(order_item_params)
     @order_items = @order.order_items
+    respond_to do |format|
+      if @order_item.update_attributes(order_item_params)
+        format.html { redirect_to order_index_url, notice: 'Item was successfully updated.' }
+        format.js   { }
+        format.json { render order_index_url, status: :created, location: @order_item }
+      else
+        format.html { render order_index_url }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
