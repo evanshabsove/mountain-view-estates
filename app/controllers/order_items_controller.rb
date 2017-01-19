@@ -2,8 +2,17 @@ class OrderItemsController < ApplicationController
   def create
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
-    @order.save
     session[:order_id] = @order.id
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to order_index_url, notice: 'Item was successfully added.' }
+        format.js   { }
+        format.json { render order_index_url, status: :created, location: @order_item }
+      else
+        format.html { render order_index_url }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update

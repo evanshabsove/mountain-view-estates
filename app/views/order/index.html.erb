@@ -50,7 +50,7 @@
     <table>
       <tr>
         <th><%= special_product.description %></th>
-        <%= bootstrap_form_for(@order_item) do |f| %>
+        <%= bootstrap_form_for(@order_item, :remote => true) do |f| %>
           <th><%= f.number_field :quantity, value: 1, min: 1 %></th>
           <%= f.hidden_field :special_product_id, value: special_product.id %>
           <th><%= f.submit "Add to Cart", class: "btn btn-primary" %></th>
