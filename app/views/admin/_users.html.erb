@@ -1,0 +1,10 @@
+<% @users.each do |user| %>
+<table>
+  <tr>
+    <th>
+      <%= user.email %>
+    </th>
+    <th><%= f.radio_button :user_id, user.id %></th>
+  </tr>
+</table>
+<% end %>
