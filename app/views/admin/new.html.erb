@@ -16,13 +16,6 @@
   <%= submit_tag "Search", :name => nil %>
 </p>
 <% end %>
-
-<%= bootstrap_form_for @user_product, url: product_user_path do |f| %>
-  <div id="user-list">
-    <%= render :partial => "users", :locals=>{:f=>f} %>
-  </div>
-  <div id="special-list">
-    <%= render :partial => "special", :locals=>{:f=>f} %>
-  </div>
-  <%= f.submit "Add special products to users", class: "btn btn-primary" %>
-<% end %>
+<div id="special-list">
+  <%= render :partial => "special" %>
+</div>
