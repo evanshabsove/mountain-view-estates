@@ -1,22 +1,44 @@
 // Place all the styles related to the Admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.admin-home {
+  background: radial-gradient(#01172F, #000b16)
+}
+
 
 #page-content-wrapper, .container-fluid, .row {
   height: 100%;
   width: 100%;
 }
 
- #page-content-wrapper {
-   background-image :image-url('space.gif');
-   text-align: center;
-   background-size: cover;
-   background-repeat: no-repeat;
- }
+#page-content-wrapper {
+ background-size: cover;
+ background-repeat: no-repeat;
+}
 
- .feature-divider-teams {
-   margin-bottom: 1.8em;
- }
+.feature-divider-teams {
+ margin-bottom: 1.8em;
+}
+
+.form-row-admin {
+ width: 75%;
+ padding: 20px;
+ background-color: white;
+ border-radius: 6px;
+}
+
+.admin-form-title {
+ margin-bottom: 46px;
+}
+
+input.form-control {
+  height: 46px;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
 /* Toggle Styles */
 
 #wrapper {
@@ -76,9 +98,9 @@
 
 .sidebar-nav li {
     text-indent: 20px;
-    line-height: 40px;
+    line-height: 46px;
     margin-top: 10px;
-
+    font-size: 22px;
 }
 
 .sidebar-nav li a {
@@ -91,7 +113,6 @@
     text-decoration: none;
     color: #fff;
     background: rgba(255,255,255,0.2);
-    border-bottom: solid #d7c9aa 1px;
 }
 
 .sidebar-nav li a:active,

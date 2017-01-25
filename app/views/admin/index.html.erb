@@ -1,19 +1,22 @@
 <div id="wrapper">
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
-      <li class="sidebar-brand"><a href="#">Admin</a></li>
-      <li><a href="#">Manage Users</a></li>
+      <li class="sidebar-brand"><%= link_to('Admin', admin_index_path) %></li>
+      <li><%= link_to('Manage Users', admin_new_path) %></li>
       <li><a href="#">Something</a></li>
-      <li><a href="#">Logout</a></li>
+      <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a></li>
     </ul>
   </div>
-  <div id="page-content-wrapper">
-    <h1>Admin Index</h1>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-    <%= bootstrap_form_for @user, url: create_user_path do |f| %>
-      <%= f.text_field :email, placeholder: "Enter Clients email" %>
-      <%= f.text_field :password, placeholder: "Enter temporary password" %>
-      <%= f.button :submit %>
-    <% end %>
+  <div id="page-content-wrapper" class="admin-home">
+    <div class="flex-container">
+      <div class="form-row-admin">
+        <h1 class="admin-form-title">Create User</h1>
+        <%= bootstrap_form_for @user, url: create_user_path do |f| %>
+          <%= f.email_field :email, placeholder: "Enter Clients email", label_class: "home-label" %>
+          <%= f.text_field :password, placeholder: "Enter temporary password", label_class: "home-label" %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
