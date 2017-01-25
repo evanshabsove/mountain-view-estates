@@ -1,5 +1,5 @@
 module ApplicationHelper
   def css_slug
-    "#{params[:controller]}-#{params[:action]}"
+    "#{params[:action]}"
   end
 end
