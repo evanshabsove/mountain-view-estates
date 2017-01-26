@@ -10,14 +10,8 @@
   </table>
   <% end %>
 
-
-  <% @special_products.each do |special_product| %>
-  <table>
-    <tr>
-      <th><%= special_product.description %></th>
-      <th><%= f.check_box :special_product_id, {:multiple => true}, checked_value = "#{special_product.id}", unchecked_value = nil%></th>
-    </tr>
-  </table>
-  <% end %>
+  <div id="special-products-table">
+    <%= render :partial => "special-table", :locals=>{:f=>f} %>
+  </div>
   <%= f.submit "Add special products to users", class: "btn btn-primary" %>
 <% end %>

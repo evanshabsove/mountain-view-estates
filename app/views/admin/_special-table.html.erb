@@ -1,0 +1,8 @@
+<% @special_products.each do |special_product| %>
+<table>
+  <tr>
+    <th><%= special_product.description %></th>
+    <th><%= f.check_box :special_product_id, {:multiple => true}, checked_value = "#{special_product.id}", unchecked_value = nil%></th>
+  </tr>
+</table>
+<% end %>
