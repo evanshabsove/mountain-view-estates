@@ -2,24 +2,20 @@
 
 <h3>Select a user</h3>
 
-<%= bootstrap_form_for @user_product, url: product_user_path do |f| %>
-  <% @users.each do |user| %>
-  <table>
-    <tr>
-      <th>
-        <%= user.email %>
-      </th>
-      <th><%= f.radio_button :user_id, user.id %></th>
-    </tr>
-  </table>
-  <% end %>
-  <% @special_products.each do |special_product| %>
-  <table>
-    <tr>
-      <th><%= special_product.description %></th>
-      <th><%= f.check_box :special_product_id, {:multiple => true}, checked_value = "#{special_product.id}", unchecked_value = nil%></th>
-    </tr>
-  </table>
-  <% end %>
-  <%= f.submit "Add special products to users", class: "btn btn-primary" %>
+<%= form_tag admin_new_path, :method => 'get', :id => "users_search" do %>
+<p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", :name => nil %>
+</p>
 <% end %>
+
+<%= form_tag admin_new_path, :method => 'get', :id => "special_search" do %>
+<p>
+  Select Items
+  <%= text_field_tag :searchspecial, params[:searchspecial] %>
+  <%= submit_tag "Search", :name => nil %>
+</p>
+<% end %>
+<div id="special-list">
+  <%= render :partial => "special" %>
+</div>

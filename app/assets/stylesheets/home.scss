@@ -1,3 +1,97 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+html, body, .flex-container {
+  height: 100%;
+  width: 100%;
+}
+
+body.new {
+  background: radial-gradient(#01172F, #000b16)
+}
+
+.form-style-8{
+    font-family: 'Open Sans Condensed', arial, sans;
+    width: 700px;
+    padding: 30px;
+    background: #FFFFFF !important;
+    margin: auto;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+    height: 50%;
+    border-radius: 6px;
+}
+.form-style-8 h2{
+  margin-bottom: 40px;
+}
+.form-style-8 input[type="email"],
+.form-style-8 input[type="password"],
+.form-style-8 select
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    margin-bottom: 10px;
+    font: 16px Arial, Helvetica, sans-serif;
+    height: 45px;
+    background-color: white;
+}
+
+.form-style-8 input[type="button"],
+.form-style-8 input[type="submit"]{
+    -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    background-color: #2CBBBB;
+    border: 1px solid #27A0A0;
+    display: inline-block;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 19px;
+    padding: 13px 23px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.form-style-8 input[type="button"]:hover,
+.form-style-8 input[type="submit"]:hover {
+    background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+    background-color:#34CACA;
+}
+
+#new_user {
+  width: 100%;
+}
+
+.form-row {
+  width: 100%;
+}
+
+.notice, .alert {
+  display: none;
+}
+
+.home-label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.field-remember {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
