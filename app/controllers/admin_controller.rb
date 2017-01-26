@@ -22,14 +22,23 @@ class AdminController < ApplicationController
   end
 
   def product_user
-    @user = User.last
+    @user = User.find(session[:user_id])
     special_product_params["special_product_id"].each do |special_product|
       @user_product = UserProduct.new
-      @user_product.user_id = special_product_params["user_id"].to_i
+      @user_product.user_id = @user.id
       @user_product.special_product_id = special_product.to_i
       @user_product.save
     end
     redirect_to admin_new_url
+  end
+
+  def selected_user
+    @user = User.find(special_product_params["user_id"].to_i)
+    session[:user_id] = @user.id
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

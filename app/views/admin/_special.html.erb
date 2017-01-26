@@ -1,17 +1,14 @@
 <%= bootstrap_form_for @user_product, url: product_user_path do |f| %>
-  <% @users.each do |user| %>
-  <table>
-    <tr>
-      <th>
-        <%= user.email %>
-      </th>
-      <th><%= f.radio_button :user_id, user.id %></th>
-    </tr>
-  </table>
-  <% end %>
-
   <div id="special-products-table">
-    <%= render :partial => "special-table", :locals=>{:f=>f} %>
+    <% @special_products.each do |special_product| %>
+    <table>
+      <tr>
+        <th><%= special_product.description %></th>
+        <th><%= f.check_box :special_product_id, {:multiple => true}, checked_value = "#{special_product.id}", unchecked_value = nil%></th>
+      </tr>
+    </table>
+    <% end %>
+
   </div>
   <%= f.submit "Add special products to users", class: "btn btn-primary" %>
 <% end %>

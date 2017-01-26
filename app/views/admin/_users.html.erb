@@ -1,10 +1,15 @@
-<% @users.each do |user| %>
-<table>
-  <tr>
-    <th>
-      <%= user.email %>
-    </th>
-    <th><%= f.radio_button :user_id, user.id %></th>
-  </tr>
-</table>
+
+
+<%= bootstrap_form_for @user_product, url: selected_user_url do |f| %>
+  <% @users.each do |user| %>
+  <table>
+    <tr>
+      <th>
+        <%= user.email %>
+      </th>
+      <th><%= f.radio_button :user_id, user.id %></th>
+    </tr>
+  </table>
+  <% end %>
+  <%= f.submit "Select User", class: "btn btn-primary" %>
 <% end %>

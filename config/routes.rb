@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   post 'create_user' => 'admin#create', as: :create_user
 
+  post 'selected_user' => 'admin#selected_user', as: :selected_user
+
   post 'create_product_user' => 'admin#product_user', as: :product_user
 
   devise_scope :user do
