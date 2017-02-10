@@ -44,6 +44,7 @@ class AdminController < ApplicationController
       format.html
       format.js
     end
+    redirect_to admin_new_url
   end
 
   def delete_product

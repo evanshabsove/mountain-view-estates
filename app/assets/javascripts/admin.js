@@ -10,6 +10,7 @@ $(function(){
   });
 
   $(".special-product-checkbox").on('click', function(){
+    console.log('here');
     event.preventDefault();
     console.log($(this).serialize());
     $.ajax({
