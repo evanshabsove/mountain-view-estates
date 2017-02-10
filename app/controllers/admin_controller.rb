@@ -17,6 +17,7 @@ class AdminController < ApplicationController
 
   def new
     @users = User.search(params[:search])
+    @selected_user = current_admin_user
     @user_product = UserProduct.new
     @special_products = SpecialProduct.search(params[:searchspecial])
   end

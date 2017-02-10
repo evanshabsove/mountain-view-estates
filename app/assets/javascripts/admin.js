@@ -9,14 +9,14 @@ $(function(){
     return false;
   });
 
-  $("#new_user_product").on('submit', function(){
+  $("#special-product-checkbox").on('click', function(){
     event.preventDefault();
     $.ajax({
-      url: "/selected_user",
+      url: "/create_product_user",
       method: "post",
-      dataType: "text",
+      dataType: "JSON",
       data: $(this).serialize()
-    }).done(function(){
+    }).done(function(responseData){
       alert('yes')
     });
   });

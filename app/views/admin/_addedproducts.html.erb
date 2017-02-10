@@ -1,0 +1,12 @@
+<%= bootstrap_form_for @user_product, url: product_user_path do |f| %>
+  <div id="special-products-table">
+    <% @selected_user.special_products.each do |special_product| %>
+    <table>
+      <tr>
+        <th><%= special_product.description %></th>
+      </tr>
+    </table>
+    <% end %>
+
+  </div>
+<% end %>
