@@ -5,7 +5,7 @@
       <tr>
         <th><%= special_product.description %></th>
         <th>
-          <th><%= f.check_box :special_product_id, {:multiple => true, class: "special-product-checkbox"}, checked_value = "#{special_product.id}", unchecked_value = nil%></th>
+          <th><%= f.check_box :special_product_id, {:multiple => true, class: "added-product-checkbox"}, checked_value = "#{special_product.id}", unchecked_value = nil%></th>
         </th>
         <th>
           <%= f.submit "Delete Special Product", class: "btn btn-primary" %>
