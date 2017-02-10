@@ -9,15 +9,17 @@ $(function(){
     return false;
   });
 
-  $("#special-product-checkbox").on('click', function(){
+  $(".special-product-checkbox").on('click', function(){
     event.preventDefault();
+    console.log($(this).serialize());
     $.ajax({
       url: "/create_product_user",
       method: "post",
       dataType: "JSON",
       data: $(this).serialize()
     }).done(function(responseData){
-      alert('yes')
+      console.log(responseData);
+      $("#added-products-list").html(responseData.html)
     });
   });
 });

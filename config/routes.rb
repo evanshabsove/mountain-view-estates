@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   post 'create_product_user' => 'admin#product_user', as: :product_user
 
+  delete 'delete_product_user' => 'admin#delete_product', as: :delete_product
+
   devise_scope :user do
     root :to => 'devise/sessions#new'
   end

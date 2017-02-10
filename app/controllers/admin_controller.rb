@@ -24,13 +24,17 @@ class AdminController < ApplicationController
 
   def product_user
     @user = User.find(session[:user_id])
+    @selected_user = @user
     special_product_params["special_product_id"].each do |special_product|
       @user_product = UserProduct.new
       @user_product.user_id = @user.id
       @user_product.special_product_id = special_product.to_i
       @user_product.save
     end
-    redirect_to admin_new_url
+    respond_to do |format|
+      format.js
+      format.json { render json: {:success => true, html: (render_to_string('_addedproducts.html.erb', objects: [@selected_user], layout: false))} }
+    end
   end
 
   def selected_user
@@ -40,6 +44,17 @@ class AdminController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def delete_product
+    @selected_user = current_admin_user
+    special_product_params["special_product_id"].each do |special_product|
+      @user_product = UserProduct.where(user_id: @selected_user.id, special_product_id: special_product.to_i)
+      @user_product.each do |user_product|
+        user_product.destroy
+      end
+    end
+    redirect_to admin_new_url
   end
 
   private
