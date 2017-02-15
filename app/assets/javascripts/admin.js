@@ -6,10 +6,23 @@ $(function(){
 
   $("#special_search input").keyup(function() {
     $.get($("#special_search").attr("action"), $("#special_search").serialize(), null, "script");
+    $(".special-product-checkbox").on('click', function(){
+      console.log('here');
+      event.preventDefault();
+      console.log($(this).serialize());
+      $.ajax({
+        url: "/create_product_user",
+        method: "post",
+        dataType: "JSON",
+        data: $(this).serialize()
+      }).done(function(responseData){
+        console.log(responseData);
+        $("#added-products-list").html(responseData.html)
+      });
+    });
     return false;
   });
-
-  $(".special-product-checkbox").on('click', function(){
+  $(document).on('click','.special-product-checkbox', {}, function(){
     console.log('here');
     event.preventDefault();
     console.log($(this).serialize());
