@@ -1,7 +1,6 @@
 <h1>I'm the new admin page</h1>
-
+<h4>Selected user: <%= @selected_user.email %></h4>
 <h3>Select a user</h3>
-
 <%= form_tag admin_new_path, :method => 'get', :id => "users_search" do %>
 <p>
   <%= text_field_tag :search, params[:search] %>
@@ -16,6 +15,12 @@
   <%= submit_tag "Search", :name => nil %>
 </p>
 <% end %>
+<div id="user-list">
+  <%= render :partial => "users" %>
+</div>
+<div id="added-products-list">
+  <%= render :partial => "addedproducts" %>
+</div>
 <div id="special-list">
   <%= render :partial => "special" %>
 </div>

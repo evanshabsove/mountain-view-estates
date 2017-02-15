@@ -39,4 +39,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_admin_user
+    @current_admin_user ||= User.find(session[:user_id]) if session[:user_id]
+    if @current_admin_user == nil
+      @current_admin_user = User.last
+    end
+    return @current_admin_user
+  end
+
 end
