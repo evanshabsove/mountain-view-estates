@@ -4,11 +4,21 @@ $(function() {
   //   $.get($("#products_search").attr("action"), $("#products_search").serialize(), null, "script");
   //   return false;
   // });
-  $(".coffee-button").on("click",function(){
-    $("#coffee-hidden").css({
-      display: 'block'
-    });
-  });
+
+
+  $(".coffee-button").change(function(){
+    var checked = $(this).is(':checked')
+    if (checked) {
+      $("#coffee-hidden").css({
+        display: 'block'
+      });
+    } else {
+      $("#coffee-hidden").css({
+        display: 'none'
+      });
+    }
+  })
+
 
   $(".other-button").on("click",function(){
     $("#coffee-hidden").css({
