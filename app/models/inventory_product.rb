@@ -22,7 +22,7 @@ class InventoryProduct < ApplicationRecord
         if def_search == nil
           where('description LIKE ? AND product_code = ?', "%#{up}%", product_code)
         else
-          where('description LIKE ? AND product_code = ? AND description LIKE ?', "%#{up}%", product_code, "%#{def_search}%")
+          where('description LIKE ? AND product_code = ? OR description LIKE ?', "%#{up}%", product_code, "%#{def_search}%")
         end
       end
     else
