@@ -13,7 +13,7 @@
   </p>
 <% else %>
   <% @order_items.each do |order_item| %>
-    <%= bootstrap_form_for(order_item, :remote => true) do |f| %>
+    <%= bootstrap_form_for(order_item) do |f| %>
       <% if order_item.inventory_product == nil %>
         <h3><%= order_item.special_product.description %>: <%= f.number_field :quantity, value: order_item.quantity.to_i, min: 0 %>: <%= f.button :submit, :class => "btn btn-primary" %></h3>
       <% else %>

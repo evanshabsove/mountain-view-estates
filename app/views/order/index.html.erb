@@ -1,7 +1,7 @@
 <h1>Order Index</h1>
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 
-<h3>Shopping cart total <%= current_order.order_items.length %></h3>
+<h3>Shopping cart total <%= current_order.order_items.length %> view cart: <a href="/carts/1" class="btn btn-primary">Cart</a></h3>
 <h1>Search</h1>
 <%= form_tag order_index_path, :method => 'get', :id => "products_search" do %>
   <p>
@@ -43,6 +43,7 @@
   </p>
   <p>
     <%= submit_tag "Search", :description => nil %>
+    <button type="button" class="btn btn-secondary"><a href="/order">Clear Search</a></button>
   </p>
 <% end %>
 
@@ -52,7 +53,7 @@
     <table>
       <tr>
         <th><%= special_product.description %></th>
-        <%= bootstrap_form_for(@order_item, :remote => true) do |f| %>
+        <%= bootstrap_form_for(@order_item) do |f| %>
           <th><%= f.number_field :quantity, value: 1, min: 1 %></th>
           <%= f.hidden_field :special_product_id, value: special_product.id %>
           <th><%= f.submit "Add to Cart", class: "btn btn-primary" %></th>
@@ -72,5 +73,4 @@
       </tr>
     </table>
   <% end %>
-  <%= will_paginate @inv_products %>
 </div>
