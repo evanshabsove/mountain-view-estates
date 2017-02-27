@@ -1,9 +1,10 @@
+<%= render partial: 'navbar' %>
 <div id="wrapper">
   <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li>Search</li>
+    <ul class="sidebar-nav sidebar-nav-order">
+      <li class="search-title">Search</li>
       <%= form_tag order_index_path, :method => 'get', :id => "products_search" do %>
-      <li><%= text_field_tag :search, params[:search] %></li>
+      <li><%= text_field_tag :search, params[:search], class: 'order-search' %></li>
       <li>
         <%= check_box_tag :product_code, 'C', params[:product_code] == 'C' ? true : false, class: "other-button checkbox" %>
         <%= label_tag(:product_code, "Cleaning Supplies") %>
@@ -40,7 +41,7 @@
       </div>
       <li>
         <%= check_box_tag :product_code, 'R', params[:product_code] == 'R' ? true : false, class: "coffee-button-regular checkbox" %>
-        <%= label_tag(:product_code, "Flavoured Coffee/Non Fair-Trade") %>
+        <%= label_tag(:product_code, "Flavoured Coffee/Non Fair-Trade", class: 'non-fair-label') %>
       </li>
       <div class="coffee-hidden-regular">
         <li>
@@ -91,50 +92,6 @@
     <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 
     <h3>Shopping cart total <%= current_order.order_items.length %> view cart: <a href="/carts/1" class="btn btn-primary">Cart</a></h3>
-    <h1>Search</h1>
-    <%= form_tag order_index_path, :method => 'get', :id => "products_search" do %>
-      <p>
-        <%= text_field_tag :search, params[:search] %>
-      </p>
-      <p>
-        Product Catagory:
-        <%= check_box_tag :product_code, 'C', params[:product_code] == 'C' ? true : false, class: "other-button checkbox" %>
-        <%= label_tag(:product_code, "Cleaning Supplies") %>
-        <%= check_box_tag :product_code, 'D', params[:product_code] == 'C' ? true : false, class: "other-button checkbox" %>
-        <%= label_tag(:product_code, "Dairy") %>
-        <%= check_box_tag :product_code, 'F', params[:product_code] == 'F' ? true : false, class: "other-button checkbox" %>
-        <%= label_tag(:product_code, "Flavoured Syrup") %>
-        <%= check_box_tag :product_code, 'FT', params[:product_code] == 'FT' ? true : false, class: "coffee-button checkbox" %>
-        <%= label_tag(:product_code, "Fair Trade Coffee") %>
-        <%= check_box_tag :product_code, 'R', params[:product_code] == 'R' ? true : false, class: "coffee-button checkbox" %>
-        <%= label_tag(:product_code, "Flavoured Coffee/Non Fair-Trade") %>
-        <%= check_box_tag :product_code, 'H', params[:product_code] == 'H' ? true : false, class: "other-button checkbox" %>
-        <%= label_tag(:product_code, "Chocolate") %>
-        <%= check_box_tag :product_code, 'P', params[:product_code] == 'P' ? true : false, class: "other-button checkbox" %>
-        <%= label_tag(:product_code, "Papper Products") %>
-        <%= check_box_tag :product_code, 'S', params[:product_code] == 'S' ? true : false, class: "other-button checkbox" %>
-        <%= label_tag(:product_code, "Sundries") %>
-        <%= check_box_tag :product_code, 'SU', params[:product_code] == 'SU' ? true : false, class: "other-button checkbox" %>
-        <%= label_tag(:product_code, "Sugar") %>
-        <%= check_box_tag :product_code, 'T', params[:product_code] == 'T' ? true : false, class: "other-button checkbox" %>
-        <%= label_tag(:product_code, "Tea") %>
-      </p>
-      <p id="coffee-hidden">
-        More defined search:
-        <%= check_box_tag :def_search, '2oz', params[:def_search] == '2oz' ? true : false, class: "hidden-button" %>
-        <%= label_tag(:def_search, "2oz coffee") %>
-        <%= check_box_tag :def_search, '2.25oz', params[:def_search] == '2.25oz' ? true : false, class: "hidden-button" %>
-        <%= label_tag(:def_search, "2.25oz coffee") %>
-        <%= check_box_tag :def_search, '2.5oz', params[:def_search] == '2.5oz' ? true : false, class: "hidden-button" %>
-        <%= label_tag(:def_search, "2.5oz coffee") %>
-        <%= check_box_tag :def_search, '5lbs', params[:def_search] == '5lbs' ? true : false, class: "hidden-button" %>
-        <%= label_tag(:def_search, "5lbs coffee") %>
-      </p>
-      <p>
-        <%= submit_tag "Search", :description => nil %>
-        <button type="button" class="btn btn-secondary"><a href="/order">Clear Search</a></button>
-      </p>
-    <% end %>
 
     <h1>list of all products</h1>
     <div id="products">

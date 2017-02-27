@@ -8,3 +8,40 @@
 .checkbox {
   display: inline-block !important;
 }
+
+.coffee-hidden-fair-trade, .coffee-hidden-regular {
+  margin-left: 25px;
+}
+
+ul.sidebar-nav-order li {
+  font-size: 14px;
+  color: white;
+  line-height: 40px;
+  input {
+    color: black;
+  }
+}
+
+ul.nav {
+  li {
+    font-size: 22px;
+    margin-top: 5px;
+  }
+}
+.order-search {
+  height: 30px;
+}
+
+.non-fair-label {
+  font-size: 12px;
+}
+
+nav.navbar.navbar-inverse {
+  margin-bottom: 0px;
+  border-radius: 0px;
+  height: 75px;
+}
+
+li.search-title {
+  margin-top: 10vh;
+}
