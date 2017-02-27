@@ -17,7 +17,7 @@
         <%= bootstrap_form_for(@order_item) do |f| %>
           <th><%= f.number_field :quantity, value: 1, min: 1 %></th>
           <%= f.hidden_field :inventory_product_id, value: inv_product.id %>
-          <th><%= f.submit "Add to Cart", class: "btn btn-primary" %></th>
+          <th class="products-button"><%= f.submit "Add to Cart", class: "btn btn-primary" %></th>
         <% end %>
       </tr>
   <% end %>
