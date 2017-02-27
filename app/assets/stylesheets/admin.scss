@@ -5,8 +5,12 @@
   background: radial-gradient(#01172F, #000b16)
 }
 
+.special-item-col {
+  margin-top: 5vh;
+}
 
-#page-content-wrapper, .container-fluid, .row {
+
+#page-content-wrapper{
   height: 100%;
   width: 100%;
 }
