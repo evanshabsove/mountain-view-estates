@@ -20,7 +20,12 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.find(params[:id])
     @order_items = @order.order_items
     if @order_item.update_attributes(order_item_params)
-      redirect_to cart_path
+      if @order_item.quantity == 0
+        @order_item.destroy
+        redirect_to cart_path
+      else
+        redirect_to cart_path
+      end
     else
       redirect_to cart_path
     end
