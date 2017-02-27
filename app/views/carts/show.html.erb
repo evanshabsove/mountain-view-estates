@@ -1,28 +1,47 @@
-<% if !@order_item.nil? && @order_item.errors.any? %>
-  <div class="alert alert-danger">
-    <ul>
-      <% @order_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<%= render partial: 'navbar' %>
+<div class="container">
+  <div class="row row-cart">
+    <div class="col-xs-12">
+      <% if !@order_item.nil? && @order_item.errors.any? %>
+        <div class="alert alert-danger">
+          <ul>
+            <% @order_item.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-    </ul>
-  </div>
-<% end %>
-<% if @order_items.size == 0 %>
-  <p>
-    There are no items in your shopping cart. Please <%= link_to "go back", order_index_path %> and add items to cart
-  </p>
-<% else %>
-  <% @order_items.each do |order_item| %>
-    <%= bootstrap_form_for(order_item, :remote => true) do |f| %>
-      <% if order_item.inventory_product == nil %>
-        <h3><%= order_item.special_product.description %>: <%= f.number_field :quantity, value: order_item.quantity.to_i, min: 0 %>: <%= f.button :submit, :class => "btn btn-primary" %></h3>
+      <% if @order_items.size == 0 %>
+        <h2>
+          There are no items in your shopping cart. Please <%= link_to "go back", order_index_path %> and add items to cart
+        </h2>
       <% else %>
-        <h3><%= order_item.inventory_product.description %>: <%= f.number_field :quantity, value: order_item.quantity.to_i, min: 0 %> : <%= f.button :submit, :class => "btn btn-primary" %></h3>
+      <h1>Current Cart: </h1>
+      <table class="table">
+
+        <% @order_items.each do |order_item| %>
+         <tr>
+          <%= bootstrap_form_for(order_item) do |f| %>
+            <% if order_item.inventory_product == nil %>
+              <th class="product-name"><%= order_item.special_product.description %></th>
+              <th><%= f.number_field :quantity, value: order_item.quantity.to_i, min: 0 %></th>
+              <th class="products-button"><%= f.button :submit, :class => "btn btn-primary" %></th>
+            <% else %>
+              <th class="product-name"><%= order_item.inventory_product.description %></th>
+              <th><%= f.number_field :quantity, value: order_item.quantity.to_i, min: 0 %></th>
+              <th class="products-button"><%= f.button :submit, :class => "btn btn-primary" %></th>
+            <% end %>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+        <%= form_for @order, url: order_url {action:"update"} do |f| %>
+          <th>Everything look good?</th>
+          <%= f.button :submit, :class => "btn btn-primary" %>
+        <% end %>
       <% end %>
-    <% end %>
-  <% end %>
-  <%= form_for @order, url: order_url {action:"update"} do |f| %>
-    <h3>Everything look good?</h3>
-    <%= f.button :submit, :class => "btn btn-primary" %>
-  <% end %>
-<% end %>
+    </div>
+
+  </div>
+
+</div>

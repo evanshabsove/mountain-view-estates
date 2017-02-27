@@ -6,14 +6,27 @@ $(function() {
   // });
 
 
-  $(".coffee-button").change(function(){
+  $(".coffee-button-fair-trade").change(function(){
     var checked = $(this).is(':checked')
     if (checked) {
-      $("#coffee-hidden").css({
+      $(".coffee-hidden-fair-trade").css({
         display: 'block'
       });
     } else {
-      $("#coffee-hidden").css({
+      $(".coffee-hidden-fair-trade").css({
+        display: 'none'
+      });
+    }
+  })
+
+  $(".coffee-button-regular").change(function(){
+    var checked = $(this).is(':checked')
+    if (checked) {
+      $(".coffee-hidden-regular").css({
+        display: 'block'
+      });
+    } else {
+      $(".coffee-hidden-regular").css({
         display: 'none'
       });
     }
@@ -21,7 +34,10 @@ $(function() {
 
 
   $(".other-button").on("click",function(){
-    $("#coffee-hidden").css({
+    $(".coffee-hidden-fair-trade").css({
+      display: 'none'
+    });
+    $(".coffee-hidden-fair-regular").css({
       display: 'none'
     });
     $(".hidden-button").prop('checked',false)
