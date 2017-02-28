@@ -1,7 +1,7 @@
 <%= bootstrap_form_for @user_product, method: 'delete', url: delete_product_path do |f| %>
   <div id="special-products-table">
+    <table class="table">
     <% @selected_user.special_products.each do |special_product| %>
-    <table>
       <tr>
         <th><%= special_product.description %></th>
         <th>
@@ -11,8 +11,7 @@
           <%= f.submit "Delete Special Product", class: "btn btn-primary" %>
         </th>
       </tr>
-    </table>
     <% end %>
-
+    </table>
   </div>
 <% end %>
