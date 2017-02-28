@@ -12,6 +12,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li style="margin-top: 11px;"><a href="/order">Home</a></li>
           <li style="margin-top: 11px;"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          <li style="margin-top: 11px;"><%= link_to('Change Password', edit_user_registration_path) %></li>
           <li><a href="/carts/1">Shopping cart total <%= current_order.order_items.length %> view cart: <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
       </ul>
     </div>
