@@ -1,14 +1,13 @@
 <%= bootstrap_form_for @user_product, url: product_user_path do |f| %>
   <div id="special-products-table">
+    <table class="table">
     <% @special_products.each do |special_product| %>
-    <table>
       <tr>
         <th><%= special_product.description %></th>
         <th><%= f.check_box :special_product_id, {:multiple => true, class: "special-product-checkbox"}, checked_value = "#{special_product.id}", unchecked_value = nil%></th>
       </tr>
-    </table>
     <% end %>
-
+    </table>
   </div>
   <%= f.submit "Add special products to users", class: "btn btn-primary" %>
 <% end %>

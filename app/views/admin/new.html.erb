@@ -1,26 +1,52 @@
-<h1>I'm the new admin page</h1>
-<h4>Selected user: <%= @selected_user.email %></h4>
-<h3>Select a user</h3>
-<%= form_tag admin_new_path, :method => 'get', :id => "users_search" do %>
-<p>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search", :name => nil %>
-</p>
-<% end %>
 
-<%= form_tag admin_new_path, :method => 'get', :id => "special_search" do %>
-<p>
-  Select Items
-  <%= text_field_tag :searchspecial, params[:searchspecial] %>
-  <%= submit_tag "Search", :name => nil %>
-</p>
-<% end %>
-<div id="user-list">
-  <%= render :partial => "users" %>
-</div>
-<div id="added-products-list">
-  <%= render :partial => "addedproducts" %>
-</div>
-<div id="special-list">
-  <%= render :partial => "special" %>
+
+
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand"><%= link_to('Admin', admin_index_path) %></li>
+      <li><%= link_to('Manage Users', admin_new_path) %></li>
+      <li><a href="#">Something</a></li>
+      <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a></li>
+    </ul>
+  </div>
+  <div id="page-content-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 well">
+          <h4>Selected user: <%= @selected_user.email %></h4>
+          <h3>Select a user</h3>
+          <%= form_tag admin_new_path, :method => 'get', :id => "users_search" do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Search", :name => nil %>
+          </p>
+          <% end %>
+          <div id="user-list">
+            <%= render :partial => "users" %>
+          </div>
+        </div>
+        <div class="col-sm-5 col-sm-offset-1 well">
+          <div id="added-products-list">
+            <%= render :partial => "addedproducts" %>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-sm-12 special-item-col well">
+            <%= form_tag admin_new_path, :method => 'get', :id => "special_search" do %>
+            <p>
+              Select Items
+              <%= text_field_tag :searchspecial, params[:searchspecial] %>
+              <%= submit_tag "Search", :name => nil %>
+            </p>
+            <% end %>
+            <div id="special-list">
+              <%= render :partial => "special" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
