@@ -19,8 +19,8 @@ class AdminController < ApplicationController
     @users = User.search(params[:search])
     @selected_user = current_admin_user
     @user_product = UserProduct.new
-    @special_products = SpecialProduct.search(params[:searchspecial], params[:product_code], params[:def_search])
-    @inventory_products = InventoryProduct.all
+    @special_products = SpecialProduct.search(params[:searchspecial], params[:product_code], params[:def_search], params[:inv_code])
+    @inventory_products = InventoryProduct.search(params[:searchspecial], params[:product_code], params[:def_search], params[:inv_code])
   end
 
   def product_user

@@ -23,7 +23,6 @@ $(function(){
     return false;
   });
   $(document).on('click','.special-product-checkbox', {}, function(){
-    console.log('here');
     event.preventDefault();
     console.log($(this).serialize());
     $.ajax({

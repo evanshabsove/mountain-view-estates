@@ -37,7 +37,7 @@
             <%= form_tag admin_new_path, :method => 'get', :id => "special_search" do %>
             <p>
               Select Items
-              <%= text_field_tag :searchspecial, params[:searchspecial] %>
+              <%= text_field_tag :inv_code, params[:inv_code] %>
               <%= submit_tag "Search", :name => nil %>
             </p>
             <% end %>
