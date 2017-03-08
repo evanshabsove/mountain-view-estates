@@ -1,5 +1,7 @@
 class InventoryProduct < ApplicationRecord
   has_many :order_items
+  has_many :user_products
+  has_many :users, through: :user_products
 
   def self.search(search, product_code, def_search)
     if search
