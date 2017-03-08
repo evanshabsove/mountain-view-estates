@@ -45,8 +45,12 @@ nav.navbar.navbar-inverse {
 li.search-title {
   margin-top: 10vh;
 }
+//
+// #products-partial, #clearence-partial {
+//   margin-top: 10vh;
+// }
 
-#products-partial {
+.order-home-col {
   margin-top: 10vh;
 }
 table.table{
@@ -54,7 +58,7 @@ table.table{
     th.product-name {
       padding-top: 40px;
     }
-    th.products-button {
+    th.products-button, th.quote {
       padding-top: 30px;
     }
   }

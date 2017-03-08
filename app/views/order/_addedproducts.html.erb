@@ -1,4 +1,13 @@
-<h1 class="products-title">Products: </h1><br><br>
+<h1 class="products-title">Normally Purchased Items </h1><br><br>
+<button type="button" name="button" class="btn btn-primary"><a href="/order/items" style="color: white;">See Entire Inventory</a></button>
+<br><br>
+<%= form_tag order_index_path, :method => 'get', :id => "added_search" do %>
+<p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", :name => nil %>
+</p>
+<% end %>
+<br><br>
 <div id="products">
   <table class="table">
   <% @special_products.each do |special_product| %>
@@ -7,10 +16,6 @@
         <%= bootstrap_form_for(@order_item) do |f| %>
           <th><%= f.number_field :quantity, value: 1, min: 1 %></th>
           <%= f.hidden_field :special_product_id, value: special_product.id %>
-          <th class="quote">
-            <button type="button" name="button"  id="<%= special_product.inventory_code %>" class="btn btn-primary">Request Quote</button>
-          </th>
-          <% inv_code_spec = special_product.inventory_code %>
           <th class="products-button"><%= f.submit "Add to Cart", class: "btn btn-primary" %></th>
           <% end %>
       </tr>
@@ -21,9 +26,6 @@
         <%= bootstrap_form_for(@order_item) do |f| %>
           <th><%= f.number_field :quantity, value: 1, min: 1 %></th>
           <%= f.hidden_field :inventory_product_id, value: inv_product.id %>
-          <th class="quote">
-            <button type="button" name="button" class="btn btn-primary" id="<%= inv_product.inventory_code %>">Request Quote</button>
-          </th>
           <th class="products-button"><%= f.submit "Add to Cart", class: "btn btn-primary" %></th>
         <% end %>
       </tr>

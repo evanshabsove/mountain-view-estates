@@ -2,9 +2,14 @@
 <div id="page-content-wrapper-order" class="order-home">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
+      <div class="col-sm-4 col-sm-offset-2 well order-home-col">
         <div id="products-partial">
-          <%= render partial: 'products' %>
+          <%= render partial: 'addedproducts' %>
+        </div>
+      </div>
+      <div class="col-sm-4 col-sm-offset-1 well order-home-col">
+        <div id="clearence-partial">
+          <%= render partial: 'clearence' %>
         </div>
       </div>
     </div>

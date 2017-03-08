@@ -1,0 +1,15 @@
+<h1 class="clearence-title">Clearence Items </h1><br><br>
+<div id="clearence">
+  <table class="table">
+  <% @clearence_products.last(2).each do |clearence_product| %>
+      <tr>
+        <th class="product-name"><%= clearence_product.description %></th>
+        <%= bootstrap_form_for(@order_item) do |f| %>
+          <th><%= f.number_field :quantity, value: 1, min: 1 %></th>
+          <%= f.hidden_field :clearence_product_id, value: clearence_product.id %>
+          <th class="products-button"><%= f.submit "Add to Cart", class: "btn btn-primary" %></th>
+        <% end %>
+      </tr>
+  <% end %>
+  </table>
+</div>
