@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :order_items, only: [:create, :update, :destroy]
 
+  get '/order/items', to: 'order#items', as: 'all_items'
+
   get '/admin', to: 'admin#index', as: 'admin_index'
 
   get '/admin/new', to: 'admin#new', as: 'admin_new'
