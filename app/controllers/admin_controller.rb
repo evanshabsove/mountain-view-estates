@@ -20,6 +20,7 @@ class AdminController < ApplicationController
     @selected_user = current_admin_user
     @user_product = UserProduct.new
     @special_products = SpecialProduct.search(params[:searchspecial], params[:product_code], params[:def_search])
+    @inventory_products = InventoryProduct.all
   end
 
   def product_user
