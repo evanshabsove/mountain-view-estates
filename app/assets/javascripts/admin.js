@@ -22,18 +22,18 @@ $(function(){
     });
     return false;
   });
-  // $(document).on('click','.special-product-checkbox', {}, function(){
-  //   console.log('here');
-  //   event.preventDefault();
-  //   console.log($(this).serialize());
-  //   $.ajax({
-  //     url: "/create_product_user",
-  //     method: "post",
-  //     dataType: "JSON",
-  //     data: $(this).serialize()
-  //   }).done(function(responseData){
-  //     console.log(responseData);
-  //     $("#added-products-list").html(responseData.html)
-  //   });
-  // });
+  $(document).on('click','.special-product-checkbox', {}, function(){
+    console.log('here');
+    event.preventDefault();
+    console.log($(this).serialize());
+    $.ajax({
+      url: "/create_product_user",
+      method: "post",
+      dataType: "JSON",
+      data: $(this).serialize()
+    }).done(function(responseData){
+      console.log(responseData);
+      $("#added-products-list").html(responseData.html)
+    });
+  });
 });

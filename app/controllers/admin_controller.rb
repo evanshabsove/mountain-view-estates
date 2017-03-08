@@ -43,11 +43,10 @@ class AdminController < ApplicationController
     else
       flash[:error]
     end
-    redirect_to admin_new_url
-    # respond_to do |format|
-    #   format.js
-    #   format.json { render json: {:success => true, html: (render_to_string('_addedproducts.html.erb', objects: [@selected_user], layout: false))} }
-    # end
+    respond_to do |format|
+      format.js
+      format.json { render json: {:success => true, html: (render_to_string('_addedproducts.html.erb', objects: [@selected_user], layout: false))} }
+    end
   end
 
   def selected_user
