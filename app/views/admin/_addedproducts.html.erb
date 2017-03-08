@@ -8,7 +8,18 @@
           <th><%= f.check_box :special_product_id, {:multiple => true, class: "added-product-checkbox"}, checked_value = "#{special_product.id}", unchecked_value = nil%></th>
         </th>
         <th>
-          <%= f.submit "Delete Special Product", class: "btn btn-primary" %>
+          <%= f.submit "Delete Product", class: "btn btn-primary" %>
+        </th>
+      </tr>
+    <% end %>
+    <% @selected_user.inventory_products.each do |inventory_product| %>
+      <tr>
+        <th><%= inventory_product.description %></th>
+        <th>
+          <th><%= f.check_box :inventory_product_id, {:multiple => true, class: "added-product-checkbox"}, checked_value = "#{inventory_product.id}", unchecked_value = nil%></th>
+        </th>
+        <th>
+          <%= f.submit "Delete Product", class: "btn btn-primary" %>
         </th>
       </tr>
     <% end %>

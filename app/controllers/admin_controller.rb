@@ -26,16 +26,28 @@ class AdminController < ApplicationController
   def product_user
     @user = User.find(session[:user_id])
     @selected_user = @user
-    special_product_params["special_product_id"].each do |special_product|
-      @user_product = UserProduct.new
-      @user_product.user_id = @user.id
-      @user_product.special_product_id = special_product.to_i
-      @user_product.save
+    if special_product_params["inventory_product_id"] == nil
+      special_product_params["special_product_id"].each do |special_product|
+        @user_product = UserProduct.new
+        @user_product.user_id = @user.id
+        @user_product.special_product_id = special_product.to_i
+        @user_product.save
+      end
+    elsif special_product_params["special_product_id"] == nil
+      special_product_params["inventory_product_id"].each do |inventory_product|
+        @user_product = UserProduct.new
+        @user_product.user_id = @user.id
+        @user_product.inventory_product_id = inventory_product.to_i
+        @user_product.save
+      end
+    else
+      flash[:error]
     end
-    respond_to do |format|
-      format.js
-      format.json { render json: {:success => true, html: (render_to_string('_addedproducts.html.erb', objects: [@selected_user], layout: false))} }
-    end
+    redirect_to admin_new_url
+    # respond_to do |format|
+    #   format.js
+    #   format.json { render json: {:success => true, html: (render_to_string('_addedproducts.html.erb', objects: [@selected_user], layout: false))} }
+    # end
   end
 
   def selected_user
@@ -50,11 +62,22 @@ class AdminController < ApplicationController
 
   def delete_product
     @selected_user = current_admin_user
-    special_product_params["special_product_id"].each do |special_product|
-      @user_product = UserProduct.where(user_id: @selected_user.id, special_product_id: special_product.to_i)
-      @user_product.each do |user_product|
-        user_product.destroy
+    if special_product_params["inventory_product_id"] == nil
+      special_product_params["special_product_id"].each do |special_product|
+        @user_product = UserProduct.where(user_id: @selected_user.id, special_product_id: special_product.to_i)
+        @user_product.each do |user_product|
+          user_product.destroy
+        end
       end
+    elsif special_product_params["special_product_id"] == nil
+      special_product_params["inventory_product_id"].each do |inventory_product|
+        @user_product = UserProduct.where(user_id: @selected_user.id, inventory_product_id: inventory_product.to_i)
+        @user_product.each do |user_product|
+          user_product.destroy
+        end
+      end
+    else
+      flash[:error]
     end
     redirect_to admin_new_url
   end
@@ -65,7 +88,7 @@ class AdminController < ApplicationController
   end
 
   def special_product_params
-    params.require(:user_product).permit(:user_id, special_product_id:[])
+    params.require(:user_product).permit(:user_id, special_product_id:[], inventory_product_id:[])
   end
 
   def authorize_admin
