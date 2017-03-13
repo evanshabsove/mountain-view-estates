@@ -44,6 +44,21 @@ $(function(){
     });
   });
 
+  $(document).on('click','.delete-product-inventory', {}, function(){
+    event.preventDefault();
+    var id = $(this).attr('value')
+    console.log(id);
+    $.ajax({
+      url: "/admin/delete_inventory/" + id,
+      method: "delete",
+      dataType: "JSON",
+      data: $(this).serialize()
+    }).done(function(responseData){
+      console.log(responseData);
+      $("#all-products").html(responseData.html)
+    });
+  });
+
   $(document).on('click','.edit-product', {}, function(){
     event.preventDefault();
     var id = $(this).attr('value')

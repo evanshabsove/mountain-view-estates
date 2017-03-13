@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   delete '/admin/delete_special/:id', to: 'admin#delete_special', as: 'admin_delete_special'
 
-  delete '/admin/delete_inventory:id', to: 'admin#delete_inventory', as: 'admin_delete_inventory'
+  delete '/admin/delete_inventory/:id', to: 'admin#delete_inventory', as: 'admin_delete_inventory'
 
   post '/admin/create', to: 'admin#create_product', as: 'admin_create_product'
 
