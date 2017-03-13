@@ -33,7 +33,7 @@ $(function(){
     event.preventDefault();
     console.log($(this).serialize());
     $.ajax({
-      url: "/admin/delete/" + id,
+      url: "/admin/delete",
       method: "delete",
       dataType: "JSON",
       data: $(this).serialize()
@@ -47,7 +47,7 @@ $(function(){
     event.preventDefault();
     console.log($(this).serialize());
     $.ajax({
-      url: "/admin/update/" + id,
+      url: "/admin/update",
       method: "post",
       dataType: "JSON",
       data: $(this).serialize()
