@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   patch '/admin/update/:id', to: 'admin#update', as: 'admin_update'
 
-  delete '/admin/delete/:id', to: 'admin#delete', as: 'admin_delete'
+  delete '/admin/delete_special/:id', to: 'admin#delete_special', as: 'admin_delete_special'
+
+  delete '/admin/delete_inventory:id', to: 'admin#delete_inventory', as: 'admin_delete_inventory'
 
   post '/admin/create', to: 'admin#create_product', as: 'admin_create_product'
 

@@ -31,9 +31,10 @@ $(function(){
 
   $(document).on('click','.delete-product', {}, function(){
     event.preventDefault();
-    console.log($(this).serialize());
+    var id = $(this).attr('value')
+    console.log(id);
     $.ajax({
-      url: "/admin/delete",
+      url: "/admin/delete/" + id,
       method: "delete",
       dataType: "JSON",
       data: $(this).serialize()
@@ -45,9 +46,10 @@ $(function(){
 
   $(document).on('click','.edit-product', {}, function(){
     event.preventDefault();
-    console.log($(this).serialize());
+    var id = $(this).attr('value')
+    console.log(id);
     $.ajax({
-      url: "/admin/update",
+      url: "/admin/update/" + id,
       method: "post",
       dataType: "JSON",
       data: $(this).serialize()
