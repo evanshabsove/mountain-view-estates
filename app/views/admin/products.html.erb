@@ -11,44 +11,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
+          <%= form_tag admin_new_path, :method => 'get', :id => "all_search" do %>
           <p>
-            Select Items
             <%= text_field_tag :inv_code, params[:inv_code] %>
             <%= submit_tag "Search", :name => nil %>
           </p>
-          <div id="special-products-table">
-            <table class="table">
-            <% @special_products.each do |special_product| %>
-              <tr>
-                <th><%= special_product.description %></th>
-                <th><%= special_product.inventory_code %></th>
-                <th><%= special_product.product_code %></th>
-                <%= bootstrap_form_for special_product, url: admin_update_url do |f| %>
-                <th><button type="button" name="button" class="btn btn-primary">Edit</button></th>
-                <% end %>
-                <%= bootstrap_form_for special_product, url: admin_delete_url do |f| %>
-                <th><button type="button" name="button" class="btn btn-primary">Delete</button></th>
-                <% end %>
-              </tr>
-            <% end %>
-            </table>
-          </div>
-          <div id="inventory-products-table">
-            <table class="table">
-            <% @inventory_products.each do |inventory_product| %>
-            <tr>
-              <th><%= inventory_product.description %></th>
-              <th><%= inventory_product.inventory_code %></th>
-              <th><%= inventory_product.product_code %></th>
-              <%= bootstrap_form_for inventory_product, url: admin_update_url do |f| %>
-              <th><button type="button" name="button" class="btn btn-primary">Edit</button></th>
-              <% end %>
-              <%= bootstrap_form_for inventory_product, url: admin_delete_url do |f| %>
-              <th><button type="button" name="button" class="btn btn-primary">Delete</button></th>
-              <% end %>
-            </tr>
-            <% end %>
-            </table>
+          <% end %>
+          <div id="all-products">
+            <%= render :partial => "all-products" %>
           </div>
         </div>
       </div>

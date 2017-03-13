@@ -6,6 +6,7 @@ $(function(){
 
   $("#special_search input").keyup(function() {
     $.get($("#special_search").attr("action"), $("#special_search").serialize(), null, "script");
+    console.log('here');
     $(".special-product-checkbox").on('click', function(){
       console.log('here');
       event.preventDefault();
@@ -24,7 +25,7 @@ $(function(){
   });
 
   $("#all_search input").keyup(function() {
-    $.get($("#special_search").attr("action"), $("#special_search").serialize(), null, "script");
+    $.get($("#all_search").attr("action"), $("#all_search").serialize(), null, "script");
     return false;
   });
 
