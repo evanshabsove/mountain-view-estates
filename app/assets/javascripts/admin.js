@@ -29,18 +29,18 @@ $(function(){
     return false;
   });
 
-  $(document).on('click','.delete-product', {}, function(){
+  $(document).on('click','.delete-product-special', {}, function(){
     event.preventDefault();
     var id = $(this).attr('value')
     console.log(id);
     $.ajax({
-      url: "/admin/delete/" + id,
+      url: "/admin/delete_special/" + id,
       method: "delete",
       dataType: "JSON",
       data: $(this).serialize()
     }).done(function(responseData){
       console.log(responseData);
-      $("#all-productst").html(responseData.html)
+      $("#all-products").html(responseData.html)
     });
   });
 
@@ -55,7 +55,7 @@ $(function(){
       data: $(this).serialize()
     }).done(function(responseData){
       console.log(responseData);
-      $("#all-productst").html(responseData.html)
+      $("#all-products").html(responseData.html)
     });
   });
 

@@ -5,8 +5,8 @@
       <th><%= special_product.description %></th>
       <th><%= special_product.inventory_code %></th>
       <th><%= special_product.product_code %></th>
-      <th><button type="button" name="button" class="btn btn-primary edit-product" value="<%= special_product.id %>">Edit</button></th>
-      <th><button type="button" name="button" class="btn btn-primary delete-product" value="<%= special_product.id %>">Delete</button></th>
+      <th><button type="button" name="button" class="btn btn-primary edit-product-special" value="<%= special_product.id %>">Edit</button></th>
+      <th><button type="button" name="button" class="btn btn-primary delete-product-special" value="<%= special_product.id %>">Delete</button></th>
     </tr>
   <% end %>
   </table>
@@ -18,8 +18,8 @@
     <th><%= inventory_product.description %></th>
     <th><%= inventory_product.inventory_code %></th>
     <th><%= inventory_product.product_code %></th>
-    <th><button type="button" name="button" class="btn btn-primary edit-product" value="<%= inventory_product.id %>">Edit</button></th>
-    <th><button type="button" name="button" class="btn btn-primary delete-product" value="<%= inventory_product.id %>">Delete</button></th>
+    <th><button type="button" name="button" class="btn btn-primary edit-product-inventory" value="<%= inventory_product.id %>">Edit</button></th>
+    <th><button type="button" name="button" class="btn btn-primary delete-product-inventory" value="<%= inventory_product.id %>">Delete</button></th>
   </tr>
   <% end %>
   </table>

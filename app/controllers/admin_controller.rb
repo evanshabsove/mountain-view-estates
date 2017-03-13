@@ -31,7 +31,11 @@ class AdminController < ApplicationController
   end
 
   def delete_special
-    raise 'hit'
+    @special_product = SpecialProduct.find(params[:id])
+    puts '@special_product'
+    @special_product.destroy
+    @special_products = SpecialProduct.all
+    @inventory_products = InventoryProduct.all
     respond_to do |format|
       format.js
       format.json { render json: {:success => true, html: (render_to_string('_all-products.html.erb', objects: [@special_products, @inventory_products], layout: false))} }
