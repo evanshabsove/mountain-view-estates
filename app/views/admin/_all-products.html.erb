@@ -5,12 +5,8 @@
       <th><%= special_product.description %></th>
       <th><%= special_product.inventory_code %></th>
       <th><%= special_product.product_code %></th>
-      <%= bootstrap_form_for special_product, url: admin_update_url do |f| %>
       <th><button type="button" name="button" class="btn btn-primary edit-product" value="<%= special_product.id %>">Edit</button></th>
-      <% end %>
-      <%= bootstrap_form_for special_product, url: admin_delete_url do |f| %>
       <th><button type="button" name="button" class="btn btn-primary delete-product" value="<%= special_product.id %>">Delete</button></th>
-      <% end %>
     </tr>
   <% end %>
   </table>
@@ -22,12 +18,8 @@
     <th><%= inventory_product.description %></th>
     <th><%= inventory_product.inventory_code %></th>
     <th><%= inventory_product.product_code %></th>
-    <%= bootstrap_form_for inventory_product, url: admin_update_url do |f| %>
     <th><button type="button" name="button" class="btn btn-primary edit-product" value="<%= inventory_product.id %>">Edit</button></th>
-    <% end %>
-    <%= bootstrap_form_for inventory_product, url: admin_delete_url do |f| %>
     <th><button type="button" name="button" class="btn btn-primary delete-product" value="<%= inventory_product.id %>">Delete</button></th>
-    <% end %>
   </tr>
   <% end %>
   </table>
