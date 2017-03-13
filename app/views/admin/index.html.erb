@@ -3,7 +3,7 @@
     <ul class="sidebar-nav">
       <li class="sidebar-brand"><%= link_to('Admin', admin_index_path) %></li>
       <li><%= link_to('Manage Users', admin_new_path) %></li>
-      <li><a href="#">Something</a></li>
+      <li><%= link_to('Manage Products', admin_products_path) %></li>
       <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a></li>
     </ul>
   </div>

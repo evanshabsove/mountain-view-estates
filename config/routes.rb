@@ -14,6 +14,14 @@ Rails.application.routes.draw do
 
   get '/admin/new', to: 'admin#new', as: 'admin_new'
 
+  get '/admin/products', to: 'admin#products', as: 'admin_products'
+
+  patch '/admin/update', to: 'admin#update', as: 'admin_update'
+
+  delete '/admin/delete', to: 'admin#delete', as: 'admin_delete'
+
+  post '/admin/create', to: 'admin#create_product', as: 'admin_create_product'
+
   post 'create_user' => 'admin#create', as: :create_user
 
   post 'selected_user' => 'admin#selected_user', as: :selected_user

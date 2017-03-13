@@ -23,6 +23,23 @@ class AdminController < ApplicationController
     @inventory_products = InventoryProduct.search(params[:searchspecial], params[:product_code], params[:def_search], params[:inv_code])
   end
 
+  def update
+    #code
+  end
+
+  def method
+    #code
+  end
+
+  def delete
+    #code
+  end
+
+  def products
+    @special_products = SpecialProduct.all
+    @inventory_products = InventoryProduct.all
+  end
+
   def product_user
     @user = User.find(session[:user_id])
     @selected_user = @user

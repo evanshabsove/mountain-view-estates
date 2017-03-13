@@ -22,6 +22,13 @@ $(function(){
     });
     return false;
   });
+
+  $("#all_search input").keyup(function() {
+    $.get($("#special_search").attr("action"), $("#special_search").serialize(), null, "script");
+    return false;
+  });
+
+
   $(document).on('click','.special-product-checkbox', {}, function(){
     event.preventDefault();
     console.log($(this).serialize());
