@@ -82,7 +82,7 @@ $(function(){
     var sibbling = $(tr).prev()
     var id = $(this).attr('id')
     $.ajax({
-      url: "/admin/update/" + id,
+      url: "/admin/update_special/" + id,
       method: "patch",
       dataType: "JSON",
       data: $('#edit_special_product_' + id).serialize()

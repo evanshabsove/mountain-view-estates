@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get '/admin/products', to: 'admin#products', as: 'admin_products'
 
-  patch '/admin/update/:id', to: 'admin#update', as: 'admin_update'
+  patch '/admin/update_special/:id', to: 'admin#update_special', as: 'admin_update_special'
 
   delete '/admin/delete_special/:id', to: 'admin#delete_special', as: 'admin_delete_special'
 

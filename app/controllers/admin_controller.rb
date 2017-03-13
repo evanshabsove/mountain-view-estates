@@ -23,7 +23,11 @@ class AdminController < ApplicationController
     @inventory_products = InventoryProduct.search(params[:searchspecial], params[:product_code], params[:def_search], params[:inv_code])
   end
 
-  def update
+  def update_special
+    @special_product = SpecialProduct.find(params[:id])
+    @special_product.update_attributes(product_params_special)
+    @special_products = SpecialProduct.all
+    @inventory_products = InventoryProduct.all
     respond_to do |format|
       format.js
       format.json { render json: {:success => true, html: (render_to_string('_all-products.html.erb', objects: [@special_products, @inventory_products], layout: false))} }
@@ -122,6 +126,10 @@ class AdminController < ApplicationController
 
   def special_product_params
     params.require(:user_product).permit(:user_id, special_product_id:[], inventory_product_id:[])
+  end
+
+  def product_params_special
+    params.require(:special_product).permit(:inventory_code, :description, :product_code)
   end
 
   def authorize_admin
