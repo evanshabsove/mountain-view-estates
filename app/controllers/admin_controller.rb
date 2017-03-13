@@ -34,6 +34,17 @@ class AdminController < ApplicationController
     end
   end
 
+  def update_inventory
+    @inventory_product = InventoryProduct.find(params[:id])
+    @inventory_product.update_attributes(product_params_inventory)
+    @special_products = SpecialProduct.all
+    @inventory_products = InventoryProduct.all
+    respond_to do |format|
+      format.js
+      format.json { render json: {:success => true, html: (render_to_string('_all-products.html.erb', objects: [@special_products, @inventory_products], layout: false))} }
+    end
+  end
+
   def delete_special
     @special_product = SpecialProduct.find(params[:id])
     @special_product.destroy
@@ -130,6 +141,10 @@ class AdminController < ApplicationController
 
   def product_params_special
     params.require(:special_product).permit(:inventory_code, :description, :product_code)
+  end
+
+  def product_params_inventory
+    params.require(:inventory_product).permit(:inventory_code, :description, :product_code)
   end
 
   def authorize_admin

@@ -17,7 +17,6 @@ $(function(){
         dataType: "JSON",
         data: $(this).serialize()
       }).done(function(responseData){
-        console.log(responseData);
         $("#added-products-list").html(responseData.html)
       });
     });
@@ -39,7 +38,6 @@ $(function(){
       dataType: "JSON",
       data: $(this).serialize()
     }).done(function(responseData){
-      console.log(responseData);
       $("#all-products").html(responseData.html)
     });
   });
@@ -54,7 +52,6 @@ $(function(){
       dataType: "JSON",
       data: $(this).serialize()
     }).done(function(responseData){
-      console.log(responseData);
       $("#all-products").html(responseData.html)
     });
   });
@@ -76,7 +73,7 @@ $(function(){
     $(sibbling).css("display", "table-row")
   });
 
-  $(document).on('click','.edit-button-submit', {}, function(){
+  $(document).on('click','.edit-button-submit-special', {}, function(){
     event.preventDefault();
     var tr = $(this).parent().parent()
     var sibbling = $(tr).prev()
@@ -87,18 +84,28 @@ $(function(){
       dataType: "JSON",
       data: $('#edit_special_product_' + id).serialize()
     }).done(function(responseData){
-      console.log(responseData);
       $("#all-products").html(responseData.html)
     });
+  });
 
-    $(tr).css("display", "none")
-    $(sibbling).css("display", "table-row")
+  $(document).on('click','.edit-button-submit-inventory', {}, function(){
+    event.preventDefault();
+    var tr = $(this).parent().parent()
+    var sibbling = $(tr).prev()
+    var id = $(this).attr('id')
+    $.ajax({
+      url: "/admin/update_inventory/" + id,
+      method: "patch",
+      dataType: "JSON",
+      data: $('#edit_inventory_product_' + id).serialize()
+    }).done(function(responseData){
+      $("#all-products").html(responseData.html)
+    });
   });
 
 
   $(document).on('click','.special-product-checkbox', {}, function(){
     event.preventDefault();
-    console.log();
     $.ajax({
       url: "/create_product_user",
       method: "post",
