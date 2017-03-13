@@ -24,15 +24,17 @@ class AdminController < ApplicationController
   end
 
   def update
-    #code
-  end
-
-  def method
-    #code
+    respond_to do |format|
+      format.js
+      format.json { render json: {:success => true, html: (render_to_string('_all-products.html.erb', objects: [@special_products, @inventory_products], layout: false))} }
+    end
   end
 
   def delete
-    #code
+    respond_to do |format|
+      format.js
+      format.json { render json: {:success => true, html: (render_to_string('_all-products.html.erb', objects: [@special_products, @inventory_products], layout: false))} }
+    end
   end
 
   def products
