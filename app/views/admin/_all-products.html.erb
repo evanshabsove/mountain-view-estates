@@ -8,6 +8,25 @@
       <th><button type="button" name="button" class="btn btn-primary edit-product-special" value="<%= special_product.id %>">Edit</button></th>
       <th><button type="button" name="button" class="btn btn-primary delete-product-special" value="<%= special_product.id %>">Delete</button></th>
     </tr>
+    <tr class="edit-tr" id="<%= special_product.inventory_code %>">
+      <%= bootstrap_form_for special_product, method: 'patch', url: delete_product_path do |f| %>
+        <th>
+          <%= f.text_field :description, value: special_product.description %>
+        </th>
+        <th>
+          <%= f.text_field :inventory_code, value: special_product.inventory_code %>
+        </th>
+        <th>
+          <%= f.text_field :product_code, value: special_product.product_code %>
+        </th>
+        <th>
+          <%= f.submit :class => "btn btn-primary edit-button-submit", :id => "#{special_product.id}" %>
+        </th>
+        <th>
+          <button type="button" name="button" class="btn btn-primary get-out-of-edit">Leave Edit</button>
+        </th>
+      <% end %>
+    </tr>
   <% end %>
   </table>
 </div>

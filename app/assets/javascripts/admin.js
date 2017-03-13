@@ -59,25 +59,46 @@ $(function(){
     });
   });
 
-  $(document).on('click','.edit-product', {}, function(){
+  $(document).on('click','.edit-product-special', {}, function(){
     event.preventDefault();
     var id = $(this).attr('value')
-    console.log(id);
+    var tr = $(this).parent().parent()
+    var sibbling = $(tr).next()
+    $(tr).css("display", "none")
+    $(sibbling).css("display", "table-row")
+  });
+
+  $(document).on('click','.get-out-of-edit', {}, function(){
+    event.preventDefault();
+    var tr = $(this).parent().parent()
+    var sibbling = $(tr).prev()
+    $(tr).css("display", "none")
+    $(sibbling).css("display", "table-row")
+  });
+
+  $(document).on('click','.edit-button-submit', {}, function(){
+    event.preventDefault();
+    var tr = $(this).parent().parent()
+    var sibbling = $(tr).prev()
+    var id = $(this).attr('id')
     $.ajax({
       url: "/admin/update/" + id,
-      method: "post",
+      method: "patch",
       dataType: "JSON",
-      data: $(this).serialize()
+      data: $('#edit_special_product_' + id).serialize()
     }).done(function(responseData){
       console.log(responseData);
       $("#all-products").html(responseData.html)
     });
+
+    $(tr).css("display", "none")
+    $(sibbling).css("display", "table-row")
   });
 
 
   $(document).on('click','.special-product-checkbox', {}, function(){
     event.preventDefault();
-    console.log($(this).serialize());
+    console.log();
     $.ajax({
       url: "/create_product_user",
       method: "post",
