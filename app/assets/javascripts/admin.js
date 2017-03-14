@@ -4,6 +4,16 @@ $(function(){
     return false;
   });
 
+  $("#product_special_product").on('click', function(){
+    $("#special-product-form").css("display", "block")
+    $("#inventory-product-form").css("display", "none")
+  })
+
+  $("#product_inventory_product").on('click', function(){
+    $("#inventory-product-form").css("display", "block")
+    $("#special-product-form").css("display", "none")
+  })
+
   $("#special_search input").keyup(function() {
     $.get($("#special_search").attr("action"), $("#special_search").serialize(), null, "script");
     console.log('here');
