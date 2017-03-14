@@ -19,8 +19,24 @@
             <%= label_tag 'Special Product' %>
             <%= radio_button_tag 'product', 'special product', :class => "form-control" %>
           </div>
-          <%= bootstrap_form_for @special_product, method: :post, url: admin_create_special_product_path do |f| %>
-          <% end %>
+          <div id="special-product-form">
+            <%= bootstrap_form_for @special_product, method: :post, url: admin_create_special_product_path do |f| %>
+              <%= f.text_field  :inventory_code %>
+              <%= f.text_field :description %>
+              <%= f.number_field :stock, value: 1 %>
+              <%= f.text_field :product_code %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+          <div id="inventory-product-form">
+            <%= bootstrap_form_for @inventory_product, method: :post, url: admin_create_inventory_product_path do |f| %>
+              <%= f.text_field  :inventory_code %>
+              <%= f.text_field :description %>
+              <%= f.number_field :stock, value: 1 %>
+              <%= f.text_field :product_code %>
+              <%= f.submit %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

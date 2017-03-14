@@ -72,6 +72,24 @@ class AdminController < ApplicationController
     end
   end
 
+  def create_inventory_product
+    @inventory_product = InventoryProduct.new(product_params_inventory)
+    if @inventory_product.save
+      redirect_to admin_index_url
+    else
+      flash[:notice] = "Something wen't wrong, try again."
+    end
+  end
+
+  def create_special_product
+    @special_product = SpecialProduct.new(product_params_special)
+    if @special_product.save
+      redirect_to admin_index_url
+    else
+      flash[:notice] = "Something wen't wrong, try again."
+    end
+  end
+
   def products
     @special_products = SpecialProduct.all
     @inventory_products = InventoryProduct.all
@@ -145,11 +163,11 @@ class AdminController < ApplicationController
   end
 
   def product_params_special
-    params.require(:special_product).permit(:inventory_code, :description, :product_code)
+    params.require(:special_product).permit(:inventory_code, :description, :product_code, :stock)
   end
 
   def product_params_inventory
-    params.require(:inventory_product).permit(:inventory_code, :description, :product_code)
+    params.require(:inventory_product).permit(:inventory_code, :description, :product_code, :stock)
   end
 
   def authorize_admin
