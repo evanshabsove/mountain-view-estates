@@ -34,6 +34,11 @@ class AdminController < ApplicationController
     end
   end
 
+  def new_product
+    @inventory_product = InventoryProduct.new
+    @special_product = SpecialProduct.new
+  end
+
   def update_inventory
     @inventory_product = InventoryProduct.find(params[:id])
     @inventory_product.update_attributes(product_params_inventory)

@@ -12,15 +12,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
-          <%= form_tag admin_new_path, :method => 'get', :id => "all_search" do %>
-          <p>
-            <%= text_field_tag :inv_code, params[:inv_code] %>
-            <%= submit_tag "Search", :name => nil %>
-          </p>
-          <% end %>
-          <div id="all-products">
-            <%= render :partial => "all-products" %>
+          <h1>Please select what kind of item you are adding</h1>
+          <div class="radio-buttons">
+            <%= label_tag 'Inventory Product' %>
+            <%= radio_button_tag 'product', 'inventory product', :class => "form-control" %>
+            <%= label_tag 'Special Product' %>
+            <%= radio_button_tag 'product', 'special product', :class => "form-control" %>
           </div>
+          <%= bootstrap_form_for @special_product, method: :post, url: admin_create_special_product_path do |f| %>
+          <% end %>
         </div>
       </div>
     </div>
