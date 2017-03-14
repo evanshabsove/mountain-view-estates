@@ -1,0 +1,64 @@
+<div id="special-products-table">
+  <table class="table">
+  <% @special_products.each do |special_product| %>
+    <tr>
+      <th><%= special_product.description %></th>
+      <th><%= special_product.inventory_code %></th>
+      <th><%= special_product.product_code %></th>
+      <th><button type="button" name="button" class="btn btn-primary edit-product-special" value="<%= special_product.id %>">Edit</button></th>
+      <th><button type="button" name="button" class="btn btn-primary delete-product-special" value="<%= special_product.id %>">Delete</button></th>
+    </tr>
+    <tr class="edit-tr" id="<%= special_product.inventory_code %>">
+      <%= bootstrap_form_for special_product, method: 'patch', url: delete_product_path do |f| %>
+        <th>
+          <%= f.text_field :description, value: special_product.description %>
+        </th>
+        <th>
+          <%= f.text_field :inventory_code, value: special_product.inventory_code %>
+        </th>
+        <th>
+          <%= f.text_field :product_code, value: special_product.product_code %>
+        </th>
+        <th>
+          <%= f.submit :class => "btn btn-primary edit-button-submit-special", :id => "#{special_product.id}" %>
+        </th>
+        <th>
+          <button type="button" name="button" class="btn btn-primary get-out-of-edit">Leave Edit</button>
+        </th>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<div id="inventory-products-table">
+  <table class="table">
+  <% @inventory_products.each do |inventory_product| %>
+  <tr>
+    <th><%= inventory_product.description %></th>
+    <th><%= inventory_product.inventory_code %></th>
+    <th><%= inventory_product.product_code %></th>
+    <th><button type="button" name="button" class="btn btn-primary edit-product-special" value="<%= inventory_product.id %>">Edit</button></th>
+    <th><button type="button" name="button" class="btn btn-primary delete-product-inventory" value="<%= inventory_product.id %>">Delete</button></th>
+  </tr>
+  <tr class="edit-tr" id="<%= inventory_product.inventory_code %>">
+    <%= bootstrap_form_for inventory_product, method: 'patch', url: delete_product_path do |f| %>
+      <th>
+        <%= f.text_field :description, value: inventory_product.description %>
+      </th>
+      <th>
+        <%= f.text_field :inventory_code, value: inventory_product.inventory_code %>
+      </th>
+      <th>
+        <%= f.text_field :product_code, value: inventory_product.product_code %>
+      </th>
+      <th>
+        <%= f.submit :class => "btn btn-primary edit-button-submit-inventory", :id => "#{inventory_product.id}" %>
+      </th>
+      <th>
+        <button type="button" name="button" class="btn btn-primary get-out-of-edit">Leave Edit</button>
+      </th>
+    <% end %>
+  </tr>
+  <% end %>
+  </table>
+</div>

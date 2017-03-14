@@ -1,9 +1,9 @@
 
 $(function() {
-  // $("#products_search input").keyup(function(){
-  //   $.get($("#products_search").attr("action"), $("#products_search").serialize(), null, "script");
-  //   return false;
-  // });
+  $("#added_search input").keyup(function(){
+    $.get($("#added_search").attr("action"), $("#added_search").serialize(), null, "script");
+    return false;
+  });
 
 
   $(".coffee-button-fair-trade").change(function(){

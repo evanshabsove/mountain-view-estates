@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :user_products
   has_many :special_products, through: :user_products
+  has_many :inventory_products, through: :user_products
   has_many :orders
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

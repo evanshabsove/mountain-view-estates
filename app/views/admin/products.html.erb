@@ -1,0 +1,28 @@
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand"><%= link_to('Admin', admin_index_path) %></li>
+      <li><%= link_to('Manage Users', admin_new_path) %></li>
+      <li><%= link_to('Manage Products', admin_products_path) %></li>
+      <li><%= link_to('Add Product', admin_new_product_path) %></li>
+      <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+    </ul>
+  </div>
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <%= form_tag admin_new_path, :method => 'get', :id => "all_search" do %>
+          <p>
+            <%= text_field_tag :inv_code, params[:inv_code] %>
+            <%= submit_tag "Search", :name => nil %>
+          </p>
+          <% end %>
+          <div id="all-products">
+            <%= render :partial => "all-products" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

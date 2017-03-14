@@ -19,17 +19,101 @@ class AdminController < ApplicationController
     @users = User.search(params[:search])
     @selected_user = current_admin_user
     @user_product = UserProduct.new
-    @special_products = SpecialProduct.search(params[:searchspecial], params[:product_code], params[:def_search])
+    @special_products = SpecialProduct.search(params[:searchspecial], params[:product_code], params[:def_search], params[:inv_code])
+    @inventory_products = InventoryProduct.search(params[:searchspecial], params[:product_code], params[:def_search], params[:inv_code])
+  end
+
+  def update_special
+    @special_product = SpecialProduct.find(params[:id])
+    @special_product.update_attributes(product_params_special)
+    @special_products = SpecialProduct.all
+    @inventory_products = InventoryProduct.all
+    respond_to do |format|
+      format.js
+      format.json { render json: {:success => true, html: (render_to_string('_all-products.html.erb', objects: [@special_products, @inventory_products], layout: false))} }
+    end
+  end
+
+  def new_product
+    @inventory_product = InventoryProduct.new
+    @special_product = SpecialProduct.new
+  end
+
+  def update_inventory
+    @inventory_product = InventoryProduct.find(params[:id])
+    @inventory_product.update_attributes(product_params_inventory)
+    @special_products = SpecialProduct.all
+    @inventory_products = InventoryProduct.all
+    respond_to do |format|
+      format.js
+      format.json { render json: {:success => true, html: (render_to_string('_all-products.html.erb', objects: [@special_products, @inventory_products], layout: false))} }
+    end
+  end
+
+  def delete_special
+    @special_product = SpecialProduct.find(params[:id])
+    @special_product.destroy
+    @special_products = SpecialProduct.all
+    @inventory_products = InventoryProduct.all
+    respond_to do |format|
+      format.js
+      format.json { render json: {:success => true, html: (render_to_string('_all-products.html.erb', objects: [@special_products, @inventory_products], layout: false))} }
+    end
+  end
+
+  def delete_inventory
+    @inventory_product = InventoryProduct.find(params[:id])
+    @inventory_product.destroy
+    @special_products = SpecialProduct.all
+    @inventory_products = InventoryProduct.all
+    respond_to do |format|
+      format.js
+      format.json { render json: {:success => true, html: (render_to_string('_all-products.html.erb', objects: [@special_products, @inventory_products], layout: false))} }
+    end
+  end
+
+  def create_inventory_product
+    @inventory_product = InventoryProduct.new(product_params_inventory)
+    if @inventory_product.save
+      redirect_to admin_index_url
+    else
+      flash[:notice] = "Something wen't wrong, try again."
+    end
+  end
+
+  def create_special_product
+    @special_product = SpecialProduct.new(product_params_special)
+    if @special_product.save
+      redirect_to admin_index_url
+    else
+      flash[:notice] = "Something wen't wrong, try again."
+    end
+  end
+
+  def products
+    @special_products = SpecialProduct.all
+    @inventory_products = InventoryProduct.all
   end
 
   def product_user
     @user = User.find(session[:user_id])
     @selected_user = @user
-    special_product_params["special_product_id"].each do |special_product|
-      @user_product = UserProduct.new
-      @user_product.user_id = @user.id
-      @user_product.special_product_id = special_product.to_i
-      @user_product.save
+    if special_product_params["inventory_product_id"] == nil
+      special_product_params["special_product_id"].each do |special_product|
+        @user_product = UserProduct.new
+        @user_product.user_id = @user.id
+        @user_product.special_product_id = special_product.to_i
+        @user_product.save
+      end
+    elsif special_product_params["special_product_id"] == nil
+      special_product_params["inventory_product_id"].each do |inventory_product|
+        @user_product = UserProduct.new
+        @user_product.user_id = @user.id
+        @user_product.inventory_product_id = inventory_product.to_i
+        @user_product.save
+      end
+    else
+      flash[:error]
     end
     respond_to do |format|
       format.js
@@ -49,11 +133,22 @@ class AdminController < ApplicationController
 
   def delete_product
     @selected_user = current_admin_user
-    special_product_params["special_product_id"].each do |special_product|
-      @user_product = UserProduct.where(user_id: @selected_user.id, special_product_id: special_product.to_i)
-      @user_product.each do |user_product|
-        user_product.destroy
+    if special_product_params["inventory_product_id"] == nil
+      special_product_params["special_product_id"].each do |special_product|
+        @user_product = UserProduct.where(user_id: @selected_user.id, special_product_id: special_product.to_i)
+        @user_product.each do |user_product|
+          user_product.destroy
+        end
       end
+    elsif special_product_params["special_product_id"] == nil
+      special_product_params["inventory_product_id"].each do |inventory_product|
+        @user_product = UserProduct.where(user_id: @selected_user.id, inventory_product_id: inventory_product.to_i)
+        @user_product.each do |user_product|
+          user_product.destroy
+        end
+      end
+    else
+      flash[:error]
     end
     redirect_to admin_new_url
   end
@@ -64,7 +159,15 @@ class AdminController < ApplicationController
   end
 
   def special_product_params
-    params.require(:user_product).permit(:user_id, special_product_id:[])
+    params.require(:user_product).permit(:user_id, special_product_id:[], inventory_product_id:[])
+  end
+
+  def product_params_special
+    params.require(:special_product).permit(:inventory_code, :description, :product_code, :stock)
+  end
+
+  def product_params_inventory
+    params.require(:inventory_product).permit(:inventory_code, :description, :product_code, :stock)
   end
 
   def authorize_admin

@@ -9,5 +9,15 @@
     <% end %>
     </table>
   </div>
-  <%= f.submit "Add special products to users", class: "btn btn-primary" %>
+  <div id="inventory-products-table">
+    <table class="table">
+    <% @inventory_products.each do |inventory_product| %>
+      <tr>
+        <th><%= inventory_product.description %></th>
+        <th><%= f.check_box :inventory_product_id, {:multiple => true, class: "special-product-checkbox"}, checked_value = "#{inventory_product.id}", unchecked_value = nil%></th>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+  <%= f.submit %>
 <% end %>
